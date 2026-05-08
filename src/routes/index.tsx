@@ -467,11 +467,18 @@ function VirtuosoHome() {
         <div className="c-form reveal">
           <div className="f-title">Let's Talk</div>
           <div className="f-sub">Free discovery call · No commitment required</div>
-          <form
-  action="/api/contact"
+      
+<form
+  action="https://formsubmit.co/tanja@virtuosovirtualassistants.com"
   method="POST"
   style={{ display: 'contents' }}
 >
+  <input type="hidden" name="_captcha" value="false" />
+  <input
+    type="hidden"
+    name="_next"
+    value="https://virtuosovirtualassistants.com/"
+  />
           
             <div className="f-row">
               <div className="fg">
