@@ -122,22 +122,18 @@ function LogoSvg({ color = '#7a1f3d' }: { color?: string }) {
 }
 
 function useReveal() {
-  useEffect(() => {
-    const els = document.querySelectorAll('.reveal')
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            e.target.classList.add('visible')
-            io.unobserve(e.target)
-          }
-        })
-      },
-      { threshold: 0.12 },
-    )
-    els.forEach((el) => io.observe(el))
-    return () => io.disconnect()
-  }, [])
+useEffect(() => {
+  if (window.location.search.includes('success=true')) {
+    setSubmitted(true)
+
+    setTimeout(() => {
+      document.getElementById('contact')?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      })
+    }, 300)
+  }
+}, [])
 }
 
 function useScrollNav() {
@@ -479,11 +475,7 @@ useEffect(() => {
     🎉 Thank you! Your inquiry has been sent successfully. We’ll get back to you within 1 business day.
   </div>
 )}
-      {window.location.search.includes('success=true') && (
-  <div className="f-success">
-    🎉 Thank you! Your inquiry has been sent successfully. We’ll get back to you within 1 business day.
-  </div>
-)}
+      
 <form
   action="https://formsubmit.co/tanja@virtuosovirtualassistants.com"
   method="POST"
