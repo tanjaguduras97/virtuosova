@@ -153,7 +153,6 @@ function useScrollNav() {
 function VirtuosoHome() {
   useReveal()
   const scrolled = useScrollNav()
-  const [submitted, setSubmitted] = useState(false)
 
  
 
@@ -468,11 +467,6 @@ function VirtuosoHome() {
         <div className="c-form reveal">
           <div className="f-title">Let's Talk</div>
           <div className="f-sub">Free discovery call · No commitment required</div>
-          {submitted && (
-            <div className="f-success">
-              🎉 Message received! We'll be in touch within one business day.
-            </div>
-          )}
           <form
   action="/api/contact"
   method="POST"
