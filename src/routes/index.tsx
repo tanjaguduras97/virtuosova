@@ -155,32 +155,7 @@ function VirtuosoHome() {
   const scrolled = useScrollNav()
   const [submitted, setSubmitted] = useState(false)
 
- function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-  e.preventDefault()
-  const form = e.currentTarget
-  const formData = new FormData(form)
-
-  void fetch('https://virtuosovaform.virtuosoo-va.workers.dev', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      first_name: formData.get('first-name'),
-      last_name: formData.get('last-name'),
-      email: formData.get('email'),
-      company: formData.get('company'),
-      service: formData.get('service'),
-      needs: formData.get('message'),
-    }),
-  })
-    .then(() => {
-      setSubmitted(true)
-      form.reset()
-    })
-    .catch(() => {
-      setSubmitted(true)
-      form.reset()
-    })
-}
+ 
 
   return (
     <>
@@ -499,27 +474,19 @@ function VirtuosoHome() {
             </div>
           )}
           <form
-            name="contact"
-            method="POST"
-            data-netlify="true"
-            netlify-honeypot="bot-field"
-            onSubmit={handleSubmit}
-            style={{ display: 'contents' }}
-          >
-            <input type="hidden" name="form-name" value="contact" />
-            <p style={{ display: 'none' }}>
-              <label>
-                Don't fill this out: <input name="bot-field" />
-              </label>
-            </p>
+  action="/api/contact"
+  method="POST"
+  style={{ display: 'contents' }}
+>
+          
             <div className="f-row">
               <div className="fg">
                 <label htmlFor="fn">First Name</label>
-                <input id="fn" name="first-name" type="text" placeholder="Jane" required />
+                <input id="fn" name="firstName" type="text" placeholder="Jane" required />
               </div>
               <div className="fg">
                 <label htmlFor="ln">Last Name</label>
-                <input id="ln" name="last-name" type="text" placeholder="Smith" required />
+                <input id="ln" name="lastName" type="text" placeholder="Smith" required />
               </div>
             </div>
             <div className="fg">
