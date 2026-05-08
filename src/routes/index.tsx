@@ -153,6 +153,13 @@ function useScrollNav() {
 function VirtuosoHome() {
   useReveal()
   const scrolled = useScrollNav()
+  const [submitted, setSubmitted] = useState(false)
+
+useEffect(() => {
+  if (window.location.search.includes('success=true')) {
+    setSubmitted(true)
+  }
+}, [])
 
  
 
@@ -467,6 +474,11 @@ function VirtuosoHome() {
         <div className="c-form reveal">
           <div className="f-title">Let's Talk</div>
           <div className="f-sub">Free discovery call · No commitment required</div>
+          {submitted && (
+  <div className="f-success">
+    🎉 Thank you! Your inquiry has been sent successfully. We’ll get back to you within 1 business day.
+  </div>
+)}
       {window.location.search.includes('success=true') && (
   <div className="f-success">
     🎉 Thank you! Your inquiry has been sent successfully. We’ll get back to you within 1 business day.
