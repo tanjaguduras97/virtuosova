@@ -5,7 +5,7 @@ export default {
     if (request.method === "OPTIONS") {
       return new Response(null, {
         headers: {
-          "Access-Control-Allow-Origin": "https://virtuosovirtualassistants.com", // ← your domain
+          "Access-Control-Allow-Origin": "*", // ← your domain
           "Access-Control-Allow-Methods": "POST, OPTIONS",
           "Access-Control-Allow-Headers": "Content-Type",
         },
@@ -107,7 +107,7 @@ export default {
         status: 500,
         headers: {
           "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "https://virtuosovirtualassistants.com",
+          "Access-Control-Allow-Origin": "*",
         },
       });
     }
@@ -116,7 +116,7 @@ export default {
       status: 200,
       headers: {
         "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "https://virtuosovirtualassistants.com",
+        "Access-Control-Allow-Origin": "*",
       },
     });
   },
