@@ -155,27 +155,32 @@ function VirtuosoHome() {
   const scrolled = useScrollNav()
   const [submitted, setSubmitted] = useState(false)
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault()
-    const form = e.currentTarget
-    const params = new URLSearchParams()
-    new FormData(form).forEach((value, key) => {
-      params.append(key, value.toString())
+ function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  e.preventDefault()
+  const form = e.currentTarget
+  const formData = new FormData(form)
+
+  void fetch('https://virtuosovaform.virtuosoo-va.workers.dev', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      first_name: formData.get('first-name'),
+      last_name: formData.get('last-name'),
+      email: formData.get('email'),
+      company: formData.get('company'),
+      service: formData.get('service'),
+      needs: formData.get('message'),
+    }),
+  })
+    .then(() => {
+      setSubmitted(true)
+      form.reset()
     })
-    void fetch('/__forms.html', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: params.toString(),
+    .catch(() => {
+      setSubmitted(true)
+      form.reset()
     })
-      .then(() => {
-        setSubmitted(true)
-        form.reset()
-      })
-      .catch(() => {
-        setSubmitted(true)
-        form.reset()
-      })
-  }
+}
 
   return (
     <>
