@@ -467,18 +467,22 @@ function VirtuosoHome() {
         <div className="c-form reveal">
           <div className="f-title">Let's Talk</div>
           <div className="f-sub">Free discovery call · No commitment required</div>
-      
+      {window.location.search.includes('success=true') && (
+  <div className="f-success">
+    🎉 Thank you! Your inquiry has been sent successfully. We’ll get back to you within 1 business day.
+  </div>
+)}
 <form
   action="https://formsubmit.co/tanja@virtuosovirtualassistants.com"
   method="POST"
   style={{ display: 'contents' }}
 >
   <input type="hidden" name="_captcha" value="false" />
-  <input
-    type="hidden"
-    name="_next"
-    value="https://virtuosovirtualassistants.com/"
-  />
+    <input
+  type="hidden"
+  name="_next"
+  value="https://virtuosovirtualassistants.com/?success=true"
+ />
           
             <div className="f-row">
               <div className="fg">
