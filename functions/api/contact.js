@@ -1,3 +1,9 @@
+export async function onRequestGet() {
+  return Response.json({
+    message: "Contact endpoint is working. Submit the website form to send an inquiry.",
+  });
+}
+
 export async function onRequestPost({ request, env }) {
   try {
     const form = await request.formData();
@@ -43,14 +49,13 @@ ${message}
 
     if (!resendResponse.ok) {
       const errorText = await resendResponse.text();
-
       return Response.json(
         { error: "Email failed to send.", details: errorText },
         { status: 500 }
       );
     }
 
-    return Response.json({ success: true });
+    return Response.redirect("https://virtuosovirtualassistants.com/#contact", 303);
   } catch (error) {
     return Response.json(
       { error: "Something went wrong.", details: error.message },
