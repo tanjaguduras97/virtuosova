@@ -474,7 +474,8 @@ function useScrollNav() {
     <input
   type="hidden"
   name="_next"
-  value="https://virtuosovirtualassistants.com/?success=true"
+  value="https://virtuosovirtualassistants.com/?success=true#contact"
+/>
  />
           
             <div className="f-row">
