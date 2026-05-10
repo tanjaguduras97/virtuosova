@@ -123,16 +123,9 @@ function LogoSvg({ color = '#7a1f3d' }: { color?: string }) {
 
 function useReveal() {
 useEffect(() => {
-  if (window.location.search.includes('success=true')) {
-    setSubmitted(true)
-
-    setTimeout(() => {
-      document.getElementById('contact')?.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-      })
-    }, 300)
-  }
+  const submitted =
+  typeof window !== 'undefined' &&
+  window.location.search.includes('success=true')
 }, [])
 }
 
