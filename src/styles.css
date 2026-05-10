@@ -271,3 +271,30 @@ code {
   transform: translateY(0) !important;
   filter: none !important;
 }
+.hero {
+  min-height: auto;
+  padding-top: 7.5rem;
+  padding-bottom: 3.5rem;
+  align-items: center;
+}
+
+.hero-title {
+  font-size: clamp(4.2rem, 5.5vw, 6.2rem);
+  margin-bottom: 1.4rem;
+}
+
+.hero-sub {
+  margin-bottom: 2rem;
+}
+
+.hcs.accent {
+  background: var(--off);
+}
+
+.hcs.accent .hcs-n {
+  color: var(--ink);
+}
+
+.hcs.accent .hcs-l {
+  color: var(--muted);
+}
