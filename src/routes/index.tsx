@@ -567,10 +567,10 @@ function useScrollNav() {
         <div className="fc">
           <h5>Legal</h5>
           <ul>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Terms of Service</a></li>
-            <li><a href="#">NDA Policy</a></li>
-            <li><a href="#">Cookie Policy</a></li>
+           <a href="/privacy-policy">Privacy Policy</a>
+<a href="/terms">Terms of Service</a>
+<a href="/terms">Confidentiality</a>
+<a href="/cookies">Cookie Policy</a>
           </ul>
         </div>
       </footer>
