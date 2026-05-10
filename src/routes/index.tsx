@@ -150,13 +150,9 @@ function useScrollNav() {
  function VirtuosoHome() {
   useReveal()
   const scrolled = useScrollNav()
-  const [submitted, setSubmitted] = useState(false)
-
-  useEffect(() => {
-    if (window.location.search.includes('success=true')) {
-      setSubmitted(true)
-    }
-  }, [])
+ const submitted =
+  typeof window !== 'undefined' &&
+  window.location.search.includes('success=true')
 
 
   return (
