@@ -476,7 +476,6 @@ function useScrollNav() {
   name="_next"
   value="https://virtuosovirtualassistants.com/?success=true#contact"
 />
- />
           
             <div className="f-row">
               <div className="fg">
