@@ -466,16 +466,10 @@ function useScrollNav() {
 )}
       
 <form
-  action="https://formsubmit.co/tanja@virtuosovirtualassistants.com"
+  action="/api/contact"
   method="POST"
   style={{ display: 'contents' }}
 >
-  <input type="hidden" name="_captcha" value="false" />
-    <input
-  type="hidden"
-  name="_next"
-  value="https://virtuosovirtualassistants.com/?success=true#contact"
-/>
           
             <div className="f-row">
               <div className="fg">
