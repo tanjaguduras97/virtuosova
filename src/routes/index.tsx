@@ -145,6 +145,7 @@ function VirtuosoHome() {
   const scrolled = useScrollNav()
   const [submitted, setSubmitted] = useState(false)
   const [formError, setFormError] = useState('')
+  const [testiIdx, setTestiIdx] = useState(0)
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -367,6 +368,59 @@ function VirtuosoHome() {
         </div>
       </section>
 
+      {/* TESTIMONIALS */}
+      <section className="testimonials">
+        <div className="sh reveal">
+          <div>
+            <span className="sec-label">Client Stories</span>
+            <h2 className="sec-title">
+              The <em>Results</em> Speak.
+            </h2>
+          </div>
+          <p className="sd">
+            From solopreneurs to growing teams — here's what working with Virtuoso
+            looks like.
+          </p>
+        </div>
+        <div className="t-carousel">
+          <button
+            className="t-arrow"
+            onClick={() => setTestiIdx((i) => (i - 1 + TESTIMONIALS.length) % TESTIMONIALS.length)}
+            aria-label="Previous testimonial"
+          >&#8249;</button>
+          <div className="t-card" key={testiIdx}>
+            <div className="t-body">
+              <div className="t-stars">★★★★★</div>
+              <p className="t-text">{TESTIMONIALS[testiIdx].text}</p>
+              <div className="t-author">
+                <div className="t-avatar">
+                  <img src={TESTIMONIALS[testiIdx].photo} alt={TESTIMONIALS[testiIdx].name} loading="lazy" />
+                </div>
+                <div>
+                  <div className="t-name">{TESTIMONIALS[testiIdx].name}</div>
+                  <div className="t-role">{TESTIMONIALS[testiIdx].role}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button
+            className="t-arrow"
+            onClick={() => setTestiIdx((i) => (i + 1) % TESTIMONIALS.length)}
+            aria-label="Next testimonial"
+          >&#8250;</button>
+        </div>
+        <div className="t-dots">
+          {TESTIMONIALS.map((_, i) => (
+            <button
+              key={i}
+              className={'t-dot' + (i === testiIdx ? ' active' : '')}
+              onClick={() => setTestiIdx(i)}
+              aria-label={`Testimonial ${i + 1}`}
+            />
+          ))}
+        </div>
+      </section>
+
       {/* WHY US */}
       <section className="why" id="why">
         <div className="why-left reveal">
@@ -402,41 +456,6 @@ function VirtuosoHome() {
               <div className="wt">
                 <h4>{w.t}</h4>
                 <p>{w.d}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* TESTIMONIALS */}
-      <section className="testimonials">
-        <div className="sh reveal">
-          <div>
-            <span className="sec-label">Client Stories</span>
-            <h2 className="sec-title">
-              The <em>Results</em> Speak.
-            </h2>
-          </div>
-          <p className="sd">
-            From solopreneurs to growing teams — here's what working with Virtuoso
-            looks like.
-          </p>
-        </div>
-        <div className="t-grid">
-          {TESTIMONIALS.map((t) => (
-            <div key={t.name} className="t-card reveal">
-              <div className="t-body">
-                <div className="t-stars">★★★★★</div>
-                <p className="t-text">{t.text}</p>
-                <div className="t-author">
-                  <div className="t-avatar">
-                    <img src={t.photo} alt={t.name} loading="lazy" />
-                  </div>
-                  <div>
-                    <div className="t-name">{t.name}</div>
-                    <div className="t-role">{t.role}</div>
-                  </div>
-                </div>
               </div>
             </div>
           ))}

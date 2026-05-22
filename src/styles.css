@@ -152,9 +152,16 @@ body { background: var(--white); color: var(--ink); font-family: var(--font-b); 
 
 /* TESTIMONIALS */
 .testimonials { padding: 7rem 5rem; background: var(--white); }
-.t-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 3.5rem; }
-.t-card { border: 1.5px solid var(--border); border-radius: 14px; overflow: hidden; background: var(--white); transition: box-shadow 0.25s, transform 0.25s, border-color 0.25s; }
-.t-card:hover { box-shadow: 0 12px 48px rgba(122,31,61,0.09); transform: translateY(-3px); border-color: rgba(122,31,61,0.25); }
+.t-carousel { display: flex; align-items: center; gap: 2rem; margin-top: 3.5rem; max-width: 860px; margin-left: auto; margin-right: auto; }
+.t-carousel .t-card { flex: 1; animation: tFade 0.3s ease; }
+.t-arrow { width: 50px; height: 50px; border-radius: 50%; border: 1.5px solid var(--border2); background: var(--white); color: var(--ink); font-size: 1.8rem; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: border-color 0.2s, background 0.2s, color 0.2s; flex-shrink: 0; }
+.t-arrow:hover { border-color: var(--terra); color: var(--terra); background: var(--terra-l); }
+.t-dots { display: flex; justify-content: center; gap: 0.6rem; margin-top: 1.5rem; }
+.t-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border2); border: none; cursor: pointer; padding: 0; transition: background 0.25s, transform 0.25s; }
+.t-dot.active { background: var(--terra); transform: scale(1.4); }
+@keyframes tFade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+.t-card { border: 1.5px solid var(--border); border-radius: 14px; overflow: hidden; background: var(--white); }
+.t-card:hover { box-shadow: 0 12px 48px rgba(122,31,61,0.09); border-color: rgba(122,31,61,0.25); }
 .t-body { padding: 2rem; }
 .t-stars { color: var(--terra); font-size: 0.85rem; letter-spacing: 0.1em; margin-bottom: 1rem; }
 .t-text { font-family: var(--font-d); font-size: 1.02rem; font-style: italic; color: var(--ink); line-height: 1.75; margin-bottom: 1.5rem; font-weight: 300; }
@@ -243,7 +250,8 @@ footer { background: var(--ink); padding: 4.5rem 5rem; display: grid; grid-templ
   .steps { grid-template-columns: 1fr 1fr; }
   .steps::before { display: none; }
   .about, .why, .contact { grid-template-columns: 1fr; gap: 3rem; }
-  .t-grid { grid-template-columns: 1fr; }
+  .t-carousel { gap: 1rem; }
+  .t-arrow { width: 40px; height: 40px; font-size: 1.4rem; }
   .sd { max-width: 100%; }
   .c-form { padding: 2rem; }
   .f-row { grid-template-columns: 1fr; }
