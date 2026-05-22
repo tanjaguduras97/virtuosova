@@ -274,6 +274,20 @@ code {
   filter: none !important;
 }
 
+.hero {
+  padding-top: 7.5rem;
+  padding-bottom: 3.5rem;
+}
+
+.hero-title {
+  font-size: clamp(4.2rem, 5.5vw, 6.2rem);
+  margin-bottom: 1.4rem;
+}
+
+.hero-sub {
+  margin-bottom: 2rem;
+}
+
 .hcs.accent {
   background: var(--off);
 }
