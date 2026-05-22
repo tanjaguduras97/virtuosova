@@ -284,7 +284,8 @@ code {
 
 .hero {
   padding-top: 5.5rem;
-  padding-bottom: 5.5rem;
+  padding-bottom: 3rem;
+  min-height: 95vh;
 }
 
 .hero-title {
