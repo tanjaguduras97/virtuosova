@@ -122,11 +122,11 @@ function LogoSvg({ color = '#7a1f3d' }: { color?: string }) {
 }
 
 function useReveal() {
-useEffect(() => {
-  const submitted =
-  typeof window !== 'undefined' &&
-  window.location.search.includes('success=true')
-}, [])
+  useEffect(() => {
+    document.querySelectorAll('.reveal').forEach((el) => {
+      new IntersectionObserver(([e]) => e.isIntersecting && el.classList.add('visible'), { threshold: 0.1 }).observe(el)
+    })
+  }, [])
 }
 
 function useScrollNav() {
@@ -140,12 +140,28 @@ function useScrollNav() {
 }
 
 
- function VirtuosoHome() {
+function VirtuosoHome() {
   useReveal()
   const scrolled = useScrollNav()
- const submitted =
-  typeof window !== 'undefined' &&
-  window.location.search.includes('success=true')
+  const [submitted, setSubmitted] = useState(false)
+  const [formError, setFormError] = useState('')
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    setFormError('')
+    const form = e.currentTarget
+    try {
+      const res = await fetch('/api/contact', { method: 'POST', body: new FormData(form) })
+      if (res.ok) {
+        setSubmitted(true)
+        form.reset()
+      } else {
+        setFormError('Something went wrong. Please try again or email us directly.')
+      }
+    } catch {
+      setFormError('Could not send — please check your connection and try again.')
+    }
+  }
 
 
   return (
@@ -460,16 +476,15 @@ function useScrollNav() {
           <div className="f-title">Let's Talk</div>
           <div className="f-sub">Free discovery call · No commitment required</div>
           {submitted && (
-  <div className="f-success">
-    🎉 Thank you! Your inquiry has been sent successfully. We’ll get back to you within 1 business day.
-  </div>
-)}
+            <div className="f-success">
+              Thank you! Your inquiry has been sent successfully. We’ll get back to you within 1 business day.
+            </div>
+          )}
+          {formError && (
+            <div className="f-error">{formError}</div>
+          )}
       
-<form
-  action="/api/contact"
-  method="POST"
-  style={{ display: 'contents' }}
->
+<form onSubmit={handleSubmit} style={{ display: 'contents' }}>
           
             <div className="f-row">
               <div className="fg">

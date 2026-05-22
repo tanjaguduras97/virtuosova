@@ -40,10 +40,7 @@ export default {
         return new Response("Email failed to send.", { status: 500 });
       }
 
-      return Response.redirect(
-        new URL("/?success=true#contact", request.url).toString(),
-        303
-      );
+      return Response.json({ success: true });
     }
 
     return env.ASSETS.fetch(request);
