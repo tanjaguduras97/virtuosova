@@ -85,39 +85,6 @@ const TESTIMONIALS = [
   },
 ]
 
-const PRICING = [
-  {
-    name: 'Starter',
-    tagline: 'Light support for solopreneurs.',
-    rate: '$10',
-    rateUnit: '/ hr · starting from',
-    hours: 'Up to 20 hrs / month',
-    features: ['1–2 specialist services', 'Email & chat support', 'Weekly progress updates', 'Flexible commitment'],
-    cta: 'Get Started',
-    featured: false,
-  },
-  {
-    name: 'Growth',
-    tagline: 'Part-time dedicated support as you scale.',
-    rate: '$10',
-    rateUnit: '/ hr · starting from',
-    hours: 'Up to 60 hrs / month',
-    features: ['3–5 specialist services', 'Priority response time', 'Dedicated team member', 'Bi-weekly strategy call'],
-    cta: 'Get Started',
-    featured: true,
-  },
-  {
-    name: 'Full Team',
-    tagline: 'End-to-end coverage for growing companies.',
-    rate: 'Custom',
-    rateUnit: 'tailored to your needs',
-    hours: 'Unlimited hours',
-    features: ['All 8 services', 'Dedicated account manager', 'Weekly strategy sessions', 'NDA & secure workflows'],
-    cta: "Let's Talk",
-    featured: false,
-  },
-]
-
 const MARQUEE_ITEMS = [
   'Social Media Management',
   'Content Creation',
@@ -487,32 +454,43 @@ function VirtuosoHome() {
 
       {/* PRICING */}
       <section className="pricing" id="pricing">
-        <div className="sh reveal">
-          <div>
+        <div className="pr-inner reveal">
+          <div className="pr-left">
             <span className="sec-label">Investment</span>
-            <h2 className="sec-title">Simple, <em>Transparent</em> Pricing.</h2>
-          </div>
-          <p className="sd">Flexible hourly rates — no retainers, no lock-ins. Scale up or down as your needs change.</p>
-        </div>
-        <div className="pr-grid">
-          {PRICING.map((p) => (
-            <div key={p.name} className={`pr-card reveal${p.featured ? ' pr-featured' : ''}`}>
-              {p.featured && <div className="pr-badge">Most Popular</div>}
-              <div className="pr-name">{p.name}</div>
-              <div className="pr-tagline">{p.tagline}</div>
-              <div className="pr-rate">
-                <span className="pr-amount">{p.rate}</span>
-                <span className="pr-unit">{p.rateUnit}</span>
-              </div>
-              <div className="pr-hours">{p.hours}</div>
-              <ul className="pr-features">
-                {p.features.map((f) => (
-                  <li key={f}><span className="pr-check">✓</span>{f}</li>
-                ))}
-              </ul>
-              <a href="#contact" className={`pr-cta${p.featured ? ' btn-terra' : ' btn-outline'}`}>{p.cta}</a>
+            <h2 className="sec-title">Honest Pricing,<br /><em>No Surprises.</em></h2>
+            <p className="pr-body">
+              Every engagement is priced based on the service and scope — not a one-size-fits-all package.
+              We'll always give you a clear quote before anything starts.
+            </p>
+            <div className="pr-pills">
+              {['No retainers', 'No lock-ins', 'Scale anytime', 'Custom quotes'].map((t) => (
+                <span key={t} className="pr-pill">{t}</span>
+              ))}
             </div>
-          ))}
+            <a href="#contact" className="btn-terra" style={{ marginTop: '2rem', display: 'inline-block' }}>Get a Custom Quote</a>
+          </div>
+          <div className="pr-right">
+            <div className="pr-rate-card">
+              <div className="pr-rate-label">Starting from</div>
+              <div className="pr-rate-num">$10<span>/hr</span></div>
+              <div className="pr-rate-note">Pricing varies by service and level of engagement. Get in touch for a tailored proposal.</div>
+              <div className="pr-rate-services">
+                {[
+                  { name: 'Social Media Management', from: '$10/hr' },
+                  { name: 'Executive Support', from: '$10/hr' },
+                  { name: 'Content Creation', from: '$10/hr' },
+                  { name: 'Website Development', from: '$15/hr' },
+                  { name: 'Automation Setup', from: '$15/hr' },
+                  { name: 'Photo & Video Editing', from: '$12/hr' },
+                ].map((s) => (
+                  <div key={s.name} className="pr-svc-row">
+                    <span className="pr-svc-name">{s.name}</span>
+                    <span className="pr-svc-from">{s.from}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -631,7 +609,7 @@ function VirtuosoHome() {
             the right support — matched to their exact needs.
           </p>
           <div className="f-location">
-            <span>📍 Based in Europe</span>
+            <span>📍 Banja Luka, Bosnia &amp; Herzegovina</span>
             <span>🕐 CET Timezone</span>
           </div>
           <div className="f-social">
@@ -641,7 +619,7 @@ function VirtuosoHome() {
             <a href="https://www.facebook.com/share/g/1G4xqJeqs4/" className="sl" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
             </a>
-            <a href="https://www.linkedin.com/company/99901278/admin/dashboard/" className="sl" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <a href="https://www.linkedin.com/company/virtuosovirtualassistants" className="sl" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
             </a>
           </div>
