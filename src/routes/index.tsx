@@ -300,7 +300,7 @@ function VirtuosoHome() {
               <div className="t-card">
                 <div className="t-body">
                   <div className="t-top">
-                    <div className="t-av-lg"><img src={t.photo} alt={t.name} loading="lazy" /></div>
+                    <div className="t-av-lg"><img src={t.photo} alt={t.name} loading="lazy" style={t.name === 'Mary Hunt' ? { objectPosition: 'center 30%' } : undefined} /></div>
                     <div>
                       <div className="t-name">{t.name}</div>
                       <div className="t-role">{t.role}</div>
