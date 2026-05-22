@@ -233,7 +233,7 @@ function VirtuosoHome() {
             </div>
             <div className="hc-foot">
               <div className="hcf-avs">
-                {['specialist-1.jpg','specialist-2.jpg','specialist-3.jpg','specialist-4.jpg','specialist-5.jpg'].map((src) => (
+                {['specialist-1.png','specialist-2.png','specialist-3.png','specialist-4.png','specialist-5.png'].map((src) => (
                   <div key={src} className="hcf-av">
                     <img src={`/${src}`} alt="Specialist" loading="lazy" />
                   </div>
