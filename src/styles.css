@@ -151,7 +151,7 @@ body { background: var(--white); color: var(--ink); font-family: var(--font-b); 
 .wt p { font-size: 0.83rem; color: var(--muted); line-height: 1.6; font-weight: 300; }
 
 /* TESTIMONIALS */
-.testimonials { padding: 7rem 5rem; background: var(--off); }
+.testimonials { padding: 7rem 5rem; background: var(--white); }
 .t-stage { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; margin-top: 3.5rem; align-items: center; }
 .t-card-wrap { transition: transform 0.35s ease, opacity 0.35s ease; opacity: 0.55; }
 .t-card-wrap.t-active { transform: translateY(-10px); opacity: 1; }
