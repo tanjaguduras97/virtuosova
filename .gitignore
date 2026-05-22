@@ -1,0 +1,5 @@
+node_modules/
+dist/
+.netlify/
+src/routeTree.gen.ts
+_worker.js.bak
