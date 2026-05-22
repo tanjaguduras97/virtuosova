@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export const Route = createFileRoute('/')({
   component: VirtuosoHome,
@@ -146,17 +146,6 @@ function VirtuosoHome() {
   const [submitted, setSubmitted] = useState(false)
   const [formError, setFormError] = useState('')
   const [testiIdx, setTestiIdx] = useState(0)
-  const trackRef = useRef<HTMLDivElement>(null)
-  const [slideWidth, setSlideWidth] = useState(0)
-  useEffect(() => {
-    const measure = () => {
-      const slide = trackRef.current?.children[0] as HTMLElement | undefined
-      if (slide) setSlideWidth(slide.offsetWidth + 32)
-    }
-    measure()
-    window.addEventListener('resize', measure)
-    return () => window.removeEventListener('resize', measure)
-  }, [])
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -301,41 +290,42 @@ function VirtuosoHome() {
           </div>
           <p className="sd">From solopreneurs to growing teams — here's what working with Virtuoso looks like.</p>
         </div>
-        <div className="t-viewport">
-          <div
-            className="t-track"
-            ref={trackRef}
-            style={slideWidth ? { transform: `translateX(-${testiIdx * slideWidth}px)` } : undefined}
-          >
-            {TESTIMONIALS.map((t, i) => (
-              <div key={i} className="t-slide">
-                <div className="t-card">
-                  <div className="t-body">
-                    <div className="t-top">
-                      <div className="t-av-lg">
-                        <img src={t.photo} alt={t.name} loading="lazy" />
-                      </div>
-                      <div>
-                        <div className="t-name">{t.name}</div>
-                        <div className="t-role">{t.role}</div>
-                      </div>
+        {(() => {
+          const prev = (testiIdx - 1 + TESTIMONIALS.length) % TESTIMONIALS.length
+          const next = (testiIdx + 1) % TESTIMONIALS.length
+          const card = (t: typeof TESTIMONIALS[0], role: 'active' | 'side', onClick?: () => void) => (
+            <div className={`t-card-wrap${role === 'active' ? ' t-active' : ''}`} onClick={onClick} style={onClick ? { cursor: 'pointer' } : undefined}>
+              <div className="t-card">
+                <div className="t-body">
+                  <div className="t-top">
+                    <div className="t-av-lg"><img src={t.photo} alt={t.name} loading="lazy" /></div>
+                    <div>
+                      <div className="t-name">{t.name}</div>
+                      <div className="t-role">{t.role}</div>
                     </div>
-                    <div className="t-stars">★★★★★</div>
-                    <p className="t-text">{t.text}</p>
                   </div>
+                  <div className="t-stars">★★★★★</div>
+                  <p className="t-text">{t.text}</p>
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
+            </div>
+          )
+          return (
+            <div className="t-stage">
+              {card(TESTIMONIALS[prev], 'side', () => setTestiIdx(prev))}
+              {card(TESTIMONIALS[testiIdx], 'active')}
+              {card(TESTIMONIALS[next], 'side', () => setTestiIdx(next))}
+            </div>
+          )
+        })()}
         <div className="t-controls">
-          <button className="t-arrow" onClick={() => setTestiIdx((i) => Math.max(0, i - 1))} disabled={testiIdx === 0} aria-label="Previous">&#8249;</button>
+          <button className="t-arrow" onClick={() => setTestiIdx((i) => (i - 1 + TESTIMONIALS.length) % TESTIMONIALS.length)} aria-label="Previous">&#8249;</button>
           <div className="t-dots">
             {TESTIMONIALS.map((_, i) => (
               <button key={i} className={'t-dot' + (i === testiIdx ? ' active' : '')} onClick={() => setTestiIdx(i)} aria-label={`Testimonial ${i + 1}`} />
             ))}
           </div>
-          <button className="t-arrow" onClick={() => setTestiIdx((i) => Math.min(TESTIMONIALS.length - 1, i + 1))} disabled={testiIdx === TESTIMONIALS.length - 1} aria-label="Next">&#8250;</button>
+          <button className="t-arrow" onClick={() => setTestiIdx((i) => (i + 1) % TESTIMONIALS.length)} aria-label="Next">&#8250;</button>
         </div>
       </section>
 
