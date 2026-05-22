@@ -273,10 +273,8 @@ code {
   filter: none !important;
 }
 .hero {
-  min-height: auto;
   padding-top: 7.5rem;
   padding-bottom: 3.5rem;
-  align-items: center;
 }
 
 .hero-title {
