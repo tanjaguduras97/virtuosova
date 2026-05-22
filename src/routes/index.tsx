@@ -150,6 +150,7 @@ function VirtuosoHome() {
   const [submitted, setSubmitted] = useState(false)
   const [formError, setFormError] = useState('')
   const [testiIdx, setTestiIdx] = useState(0)
+  const [menuOpen, setMenuOpen] = useState(false)
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -192,7 +193,37 @@ function VirtuosoHome() {
           <li><a href="#contact">Contact</a></li>
           <li><a href="#contact" className="nav-cta">Get Started</a></li>
         </ul>
+        <button className="nav-hamburger" onClick={() => setMenuOpen(o => !o)} aria-label="Toggle menu">
+          <span className={menuOpen ? 'hb-open' : ''} />
+          <span className={menuOpen ? 'hb-open' : ''} />
+          <span className={menuOpen ? 'hb-open' : ''} />
+        </button>
       </nav>
+
+      {/* MOBILE MENU */}
+      {menuOpen && (
+        <div className="mobile-overlay" onClick={() => setMenuOpen(false)}>
+          <nav className="mobile-drawer" onClick={e => e.stopPropagation()}>
+            <div className="mobile-drawer-top">
+              <a href="#" className="logo-wrap" onClick={() => setMenuOpen(false)}>
+                <LogoSvg />
+                <span className="logo-name">Virtu<span>o</span>so</span>
+              </a>
+              <button className="mobile-close" onClick={() => setMenuOpen(false)} aria-label="Close menu">✕</button>
+            </div>
+            {[
+              { href: '#services', label: 'Services' },
+              { href: '#about', label: 'About' },
+              { href: '#why', label: 'Why Us' },
+              { href: '#pricing', label: 'Pricing' },
+              { href: '#contact', label: 'Contact' },
+            ].map(l => (
+              <a key={l.label} href={l.href} className="mobile-link" onClick={() => setMenuOpen(false)}>{l.label}</a>
+            ))}
+            <a href="#contact-form" className="btn-terra mobile-cta" onClick={() => setMenuOpen(false)}>Get Started</a>
+          </nav>
+        </div>
+      )}
 
       {/* HERO */}
       <section className="hero">
@@ -458,34 +489,42 @@ function VirtuosoHome() {
 
       {/* PRICING */}
       <section className="pricing" id="pricing">
-        <div className="pr-head reveal">
+        <div className="pr-left reveal">
           <span className="sec-label">Investment</span>
-          <h2 className="sec-title pr-title">Flexible Pricing,<br /><em>Built Around You.</em></h2>
-          <p className="pr-sub">
-            Significantly more affordable than hiring in-house — with the quality of a specialist team.
-            We offer hourly rates and monthly packages depending on the service and what works best for you.
-            Every quote is clear and tailored before anything starts.
+          <h2 className="sec-title">
+            Affordable Support,<br /><em>No Surprises.</em>
+          </h2>
+          <p>
+            A fraction of the cost of hiring in-house — with the quality of a dedicated specialist.
+            We offer both hourly rates and monthly packages depending on the service and what works
+            best for your needs. Every quote is tailored and transparent before anything starts.
           </p>
-        </div>
-        <div className="pr-options reveal">
-          {[
-            { label: 'Hourly Rates', desc: 'Pay only for the hours you need. Perfect for focused tasks or getting started without commitment.' },
-            { label: 'Monthly Packages', desc: 'Consistent, predictable support at a fixed monthly cost. Ideal for ongoing services.' },
-            { label: 'Project-Based', desc: 'A clear scope, a clear price. Great for one-off projects like website builds or content campaigns.' },
-          ].map((o) => (
-            <div key={o.label} className="pr-opt">
-              <div className="pr-opt-label">{o.label}</div>
-              <p className="pr-opt-desc">{o.desc}</p>
-            </div>
-          ))}
-        </div>
-        <div className="pr-footer reveal">
-          <div className="pr-tags">
+          <div className="pr-checks">
             {['No lock-in contracts', 'Scale up or down anytime', 'Full quote before you commit', 'Fraction of in-house costs'].map((t) => (
-              <span key={t} className="pr-tag">✓ {t}</span>
+              <div key={t} className="pr-check-row">
+                <div className="av-dot" />
+                <span>{t}</span>
+              </div>
             ))}
           </div>
-          <a href="#contact" className="btn-terra">Get a Custom Quote</a>
+          <a href="#contact" className="btn-terra" style={{ marginTop: '2rem', display: 'inline-block' }}>Get a Custom Quote</a>
+        </div>
+        <div className="pr-right reveal">
+          <div className="why-list">
+            {[
+              { i: '⏱', t: 'Hourly Rates', d: 'Pay only for the hours you need — ideal for focused tasks or getting started without commitment.' },
+              { i: '📦', t: 'Monthly Packages', d: 'Consistent, predictable support at a fixed monthly cost. Great for ongoing services.' },
+              { i: '🎯', t: 'Project-Based', d: 'A clear scope and a clear price. Perfect for one-off projects like website builds or content campaigns.' },
+            ].map((w) => (
+              <div key={w.t} className="wr">
+                <div className="wi">{w.i}</div>
+                <div className="wt">
+                  <h4>{w.t}</h4>
+                  <p>{w.d}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -534,7 +573,7 @@ function VirtuosoHome() {
             ))}
           </div>
         </div>
-        <div className="c-form reveal">
+        <div className="c-form reveal" id="contact-form">
           <div className="f-title">Let's Talk</div>
           <div className="f-sub">Free discovery call · No commitment required</div>
           {submitted && (
