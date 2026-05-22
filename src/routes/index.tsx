@@ -366,7 +366,7 @@ function VirtuosoHome() {
         <div className="about-right reveal">
           <div className="founder-card">
             <img src="/tanja.jpg" alt="Tanja, Founder & CEO" className="founder-photo" loading="lazy" />
-            <div className="founder-overlay">
+            <div className="founder-body">
               <div className="founder-label">Tanja — Founder &amp; CEO</div>
               <div className="founder-headline">Building the team I always needed.</div>
               <p className="founder-quote">
