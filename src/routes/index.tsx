@@ -458,44 +458,34 @@ function VirtuosoHome() {
 
       {/* PRICING */}
       <section className="pricing" id="pricing">
-        <div className="pr-inner reveal">
-          <div className="pr-left">
-            <span className="sec-label">Investment</span>
-            <h2 className="sec-title">Flexible Pricing,<br /><em>Real Value.</em></h2>
-            <p className="pr-body">
-              We offer both hourly rates and monthly packages — whichever fits your workflow and budget best.
-              Every quote is tailored to the services and scope you actually need, with no surprises.
-            </p>
-            <div className="pr-pills">
-              {['Hourly rates', 'Monthly packages', 'No lock-ins', 'Custom quotes'].map((t) => (
-                <span key={t} className="pr-pill">{t}</span>
-              ))}
+        <div className="pr-head reveal">
+          <span className="sec-label">Investment</span>
+          <h2 className="sec-title pr-title">Flexible Pricing,<br /><em>Built Around You.</em></h2>
+          <p className="pr-sub">
+            Significantly more affordable than hiring in-house — with the quality of a specialist team.
+            We offer hourly rates and monthly packages depending on the service and what works best for you.
+            Every quote is clear and tailored before anything starts.
+          </p>
+        </div>
+        <div className="pr-options reveal">
+          {[
+            { label: 'Hourly Rates', desc: 'Pay only for the hours you need. Perfect for focused tasks or getting started without commitment.' },
+            { label: 'Monthly Packages', desc: 'Consistent, predictable support at a fixed monthly cost. Ideal for ongoing services.' },
+            { label: 'Project-Based', desc: 'A clear scope, a clear price. Great for one-off projects like website builds or content campaigns.' },
+          ].map((o) => (
+            <div key={o.label} className="pr-opt">
+              <div className="pr-opt-label">{o.label}</div>
+              <p className="pr-opt-desc">{o.desc}</p>
             </div>
-            <a href="#contact" className="btn-terra" style={{ marginTop: '2rem', display: 'inline-block' }}>Get a Custom Quote</a>
+          ))}
+        </div>
+        <div className="pr-footer reveal">
+          <div className="pr-tags">
+            {['No lock-in contracts', 'Scale up or down anytime', 'Full quote before you commit', 'Fraction of in-house costs'].map((t) => (
+              <span key={t} className="pr-tag">✓ {t}</span>
+            ))}
           </div>
-          <div className="pr-right">
-            <div className="pr-rate-card">
-              <div className="pr-rate-label">Why it's affordable</div>
-              <div className="pr-value-headline">A fraction of the cost of hiring in-house.</div>
-              <div className="pr-rate-note">
-                You get specialist-level expertise without the overhead of a full-time employee — no benefits,
-                no desk, no downtime. Pay only for what you need, when you need it.
-              </div>
-              <div className="pr-rate-services">
-                {[
-                  { label: 'Hourly rates', note: 'Pay as you go — ideal for focused tasks' },
-                  { label: 'Monthly packages', note: 'Consistent support at a predictable cost' },
-                  { label: 'Project-based', note: 'One-off work with a clear scope & quote' },
-                  { label: 'Always transparent', note: 'You see the full quote before anything starts' },
-                ].map((s) => (
-                  <div key={s.label} className="pr-svc-row">
-                    <span className="pr-svc-name">{s.label}</span>
-                    <span className="pr-svc-note">{s.note}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+          <a href="#contact" className="btn-terra">Get a Custom Quote</a>
         </div>
       </section>
 
