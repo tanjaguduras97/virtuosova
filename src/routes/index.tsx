@@ -385,8 +385,7 @@ function VirtuosoHome() {
           <div>
             <span className="sec-label">How It Works</span>
             <h2 className="sec-title on-dark">
-              From First Call to<br />
-              <em>Fully Supported.</em>
+              From First Call to <em>Fully Supported.</em>
             </h2>
           </div>
           <p className="sd on-dark">
