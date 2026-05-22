@@ -15,44 +15,48 @@ export const Route = createFileRoute('/')({
   }),
 })
 
+const S = (p: React.SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" width="22" height="22" {...p} />
+)
+
 const SERVICES = [
   {
-    icon: '📊',
+    icon: <S><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 10l2 2 4-4M9 15h6"/></S>,
     name: 'Project Management',
     desc: 'Organized timelines, cross-team coordination, and task tracking so your projects ship on time.',
   },
   {
-    icon: '🌐',
+    icon: <S><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 9h20M8 13l-2 2 2 2M16 13l2 2-2 2M12 18l1-4"/></S>,
     name: 'Website Development',
     desc: 'Landing pages and full websites built to look great, load fast, and convert visitors into clients.',
   },
   {
-    icon: '📱',
+    icon: <S><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.4 10.9l7.2-4M8.4 13.1l7.2 4"/></S>,
     name: 'Social Media Management',
     desc: 'Strategy, scheduling, community management, and growth across all your platforms — handled completely.',
   },
   {
-    icon: '✨',
+    icon: <S><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></S>,
     name: 'Content Creation',
     desc: 'Engaging posts, captions, newsletters, and brand storytelling crafted to connect with your audience.',
   },
   {
-    icon: '🎬',
+    icon: <S><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></S>,
     name: 'Photo & Video Editing',
     desc: 'Professional editing and post-production that keeps your content polished, on-brand, and scroll-stopping.',
   },
   {
-    icon: '👔',
+    icon: <S><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2M12 12v4M10 14h4"/></S>,
     name: 'Executive Support',
     desc: 'Calendar control, inbox management, research, and strategic admin for busy CEOs and leaders.',
   },
   {
-    icon: '🎧',
+    icon: <S><path d="M3 18v-6a9 9 0 0118 0v6"/><path d="M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3zM3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3z"/></S>,
     name: 'Customer Support',
     desc: 'Professional, responsive customer service via calls — keeping your clients happy and loyal.',
   },
   {
-    icon: '⚙️',
+    icon: <S><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1l2.1-2.1M17 7l2.1-2.1"/></S>,
     name: 'Automation Setup',
     desc: 'Smart workflow automations and tool integrations that save hours every week.',
   },

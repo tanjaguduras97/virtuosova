@@ -95,15 +95,16 @@ body { background: var(--white); color: var(--ink); font-family: var(--font-b); 
 
 /* SERVICES */
 .services { padding: 7rem 5rem; background: var(--off); }
-.svc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5px; background: var(--border); border: 1.5px solid var(--border); border-radius: 12px; overflow: hidden; }
-.svc-card { background: var(--white); padding: 2.5rem 2rem; display: flex; flex-direction: column; gap: 0.8rem; transition: background 0.2s; position: relative; }
-.svc-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--terra); transform: scaleX(0); transform-origin: left; transition: transform 0.3s; }
+.svc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5px; background: var(--border); border: 1.5px solid var(--border); border-radius: 16px; overflow: hidden; }
+.svc-card { background: var(--white); padding: 2.8rem 2.2rem; display: flex; flex-direction: column; gap: 0; transition: background 0.25s, transform 0.25s, box-shadow 0.25s; position: relative; cursor: default; }
+.svc-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2.5px; background: var(--terra); transform: scaleX(0); transform-origin: left; transition: transform 0.35s cubic-bezier(0.4,0,0.2,1); }
 .svc-card:hover { background: var(--off); }
 .svc-card:hover::before { transform: scaleX(1); }
-.svc-icon { width: 44px; height: 44px; background: var(--terra-l); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; margin-bottom: 0.4rem; }
-.svc-num { font-family: var(--font-m); font-size: 0.62rem; color: var(--border2); letter-spacing: 0.15em; }
-.svc-name { font-family: var(--font-d); font-size: 1.35rem; font-weight: 600; color: var(--ink); line-height: 1.2; }
-.svc-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.72; font-weight: 300; flex: 1; }
+.svc-icon { width: 48px; height: 48px; background: var(--terra-l); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--terra); margin-bottom: 1.6rem; transition: background 0.25s, color 0.25s; flex-shrink: 0; }
+.svc-card:hover .svc-icon { background: var(--terra); color: var(--white); }
+.svc-num { font-family: var(--font-m); font-size: 0.6rem; color: var(--border2); letter-spacing: 0.15em; margin-bottom: 0.5rem; }
+.svc-name { font-family: var(--font-d); font-size: 1.25rem; font-weight: 600; color: var(--ink); line-height: 1.2; margin-bottom: 0.75rem; }
+.svc-desc { font-size: 0.84rem; color: var(--muted); line-height: 1.75; font-weight: 300; flex: 1; }
 
 /* ABOUT */
 .about { padding: 7rem 5rem 4rem; background: var(--white); display: grid; grid-template-columns: 1fr 1fr; gap: 7rem; align-items: center; }
