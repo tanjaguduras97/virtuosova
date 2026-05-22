@@ -85,6 +85,39 @@ const TESTIMONIALS = [
   },
 ]
 
+const PRICING = [
+  {
+    name: 'Starter',
+    tagline: 'Light support for solopreneurs.',
+    rate: '$10',
+    rateUnit: '/ hr · starting from',
+    hours: 'Up to 20 hrs / month',
+    features: ['1–2 specialist services', 'Email & chat support', 'Weekly progress updates', 'Flexible commitment'],
+    cta: 'Get Started',
+    featured: false,
+  },
+  {
+    name: 'Growth',
+    tagline: 'Part-time dedicated support as you scale.',
+    rate: '$10',
+    rateUnit: '/ hr · starting from',
+    hours: 'Up to 60 hrs / month',
+    features: ['3–5 specialist services', 'Priority response time', 'Dedicated team member', 'Bi-weekly strategy call'],
+    cta: 'Get Started',
+    featured: true,
+  },
+  {
+    name: 'Full Team',
+    tagline: 'End-to-end coverage for growing companies.',
+    rate: 'Custom',
+    rateUnit: 'tailored to your needs',
+    hours: 'Unlimited hours',
+    features: ['All 8 services', 'Dedicated account manager', 'Weekly strategy sessions', 'NDA & secure workflows'],
+    cta: "Let's Talk",
+    featured: false,
+  },
+]
+
 const MARQUEE_ITEMS = [
   'Social Media Management',
   'Content Creation',
@@ -184,6 +217,7 @@ function VirtuosoHome() {
           <li><a href="#services">Services</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#why">Why Us</a></li>
+          <li><a href="#pricing">Pricing</a></li>
           <li><a href="#contact">Contact</a></li>
           <li><a href="#contact" className="nav-cta">Get Started</a></li>
         </ul>
@@ -451,6 +485,37 @@ function VirtuosoHome() {
         </div>
       </section>
 
+      {/* PRICING */}
+      <section className="pricing" id="pricing">
+        <div className="sh reveal">
+          <div>
+            <span className="sec-label">Investment</span>
+            <h2 className="sec-title">Simple, <em>Transparent</em> Pricing.</h2>
+          </div>
+          <p className="sd">Flexible hourly rates — no retainers, no lock-ins. Scale up or down as your needs change.</p>
+        </div>
+        <div className="pr-grid">
+          {PRICING.map((p) => (
+            <div key={p.name} className={`pr-card reveal${p.featured ? ' pr-featured' : ''}`}>
+              {p.featured && <div className="pr-badge">Most Popular</div>}
+              <div className="pr-name">{p.name}</div>
+              <div className="pr-tagline">{p.tagline}</div>
+              <div className="pr-rate">
+                <span className="pr-amount">{p.rate}</span>
+                <span className="pr-unit">{p.rateUnit}</span>
+              </div>
+              <div className="pr-hours">{p.hours}</div>
+              <ul className="pr-features">
+                {p.features.map((f) => (
+                  <li key={f}><span className="pr-check">✓</span>{f}</li>
+                ))}
+              </ul>
+              <a href="#contact" className={`pr-cta${p.featured ? ' btn-terra' : ' btn-outline'}`}>{p.cta}</a>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* CONTACT */}
       <section className="contact" id="contact">
         <div className="contact-left reveal">
@@ -478,6 +543,22 @@ function VirtuosoHome() {
                 <span className="ci-val">Within 1 business day</span>
               </div>
             </div>
+          </div>
+          <div className="c-next">
+            <div className="cn-label">What happens next</div>
+            {[
+              { n: '1', t: 'We review your enquiry', d: 'Usually within a few hours on business days.' },
+              { n: '2', t: 'Discovery call', d: '30 minutes to align on your needs and find the right specialists.' },
+              { n: '3', t: 'Custom proposal', d: 'A tailored plan with your team, services, and pricing — ready to start.' },
+            ].map((s) => (
+              <div key={s.n} className="cn-row">
+                <div className="cn-num">{s.n}</div>
+                <div>
+                  <div className="cn-t">{s.t}</div>
+                  <div className="cn-d">{s.d}</div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
         <div className="c-form reveal">
@@ -549,6 +630,10 @@ function VirtuosoHome() {
             A network of vetted specialists helping entrepreneurs and executives get
             the right support — matched to their exact needs.
           </p>
+          <div className="f-location">
+            <span>📍 Based in Europe</span>
+            <span>🕐 CET Timezone</span>
+          </div>
           <div className="f-social">
             <a href="https://www.upwork.com/agencies/virtuosovirtualassistants/" className="sl" target="_blank" rel="noopener noreferrer" aria-label="Upwork">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.548-1.405-.002-2.543-1.143-2.545-2.548V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z"/></svg>

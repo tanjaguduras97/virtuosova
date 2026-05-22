@@ -147,10 +147,30 @@ body { background: var(--white); color: var(--ink); font-family: var(--font-b); 
 .wt h4 { font-weight: 600; font-size: 0.92rem; color: var(--ink); margin-bottom: 0.2rem; }
 .wt p { font-size: 0.83rem; color: var(--muted); line-height: 1.6; font-weight: 300; }
 
+/* PRICING */
+.pricing { padding: 7rem 5rem; background: var(--off); }
+.pr-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3.5rem; align-items: start; }
+.pr-card { background: var(--white); border: 1.5px solid var(--border); border-radius: 16px; padding: 2.5rem 2rem; position: relative; display: flex; flex-direction: column; gap: 0.9rem; transition: box-shadow 0.25s, transform 0.25s; }
+.pr-card:hover { box-shadow: 0 12px 40px rgba(26,20,16,0.07); transform: translateY(-3px); }
+.pr-featured { border-color: var(--terra); box-shadow: 0 16px 56px rgba(122,31,61,0.12); transform: translateY(-10px); }
+.pr-featured:hover { transform: translateY(-13px); }
+.pr-badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--terra); color: var(--white); font-family: var(--font-m); font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; padding: 0.35rem 1.1rem; border-radius: 20px; white-space: nowrap; }
+.pr-name { font-family: var(--font-d); font-size: 1.6rem; font-weight: 700; color: var(--ink); }
+.pr-tagline { font-size: 0.85rem; color: var(--muted); line-height: 1.6; font-weight: 300; }
+.pr-rate { display: flex; align-items: baseline; gap: 0.5rem; margin-top: 0.4rem; }
+.pr-amount { font-family: var(--font-d); font-size: 2.8rem; font-weight: 700; color: var(--ink); line-height: 1; }
+.pr-unit { font-size: 0.8rem; color: var(--muted); font-weight: 300; line-height: 1.4; max-width: 100px; }
+.pr-hours { font-family: var(--font-m); font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--terra); }
+.pr-features { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; border-top: 1px solid var(--border); padding-top: 1.4rem; margin-top: 0.4rem; flex: 1; }
+.pr-features li { display: flex; align-items: flex-start; gap: 0.7rem; font-size: 0.87rem; color: var(--ink2); font-weight: 400; line-height: 1.5; }
+.pr-check { color: var(--terra); font-size: 0.78rem; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+.pr-cta { display: block; text-align: center; margin-top: 0.8rem; }
+
 /* TESTIMONIALS */
 .testimonials { padding: 7rem 5rem; background: var(--white); }
 .t-stage { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; margin-top: 3.5rem; align-items: center; }
-.t-card-wrap { transition: transform 0.35s ease, opacity 0.35s ease; opacity: 0.7; }
+.t-card-wrap { transition: transform 0.35s ease, opacity 0.35s ease; opacity: 0.65; }
+.t-card-wrap:not(.t-active):hover { opacity: 0.88; transform: translateY(-4px); }
 .t-card-wrap.t-active { transform: translateY(-10px); opacity: 1; }
 .t-card { border: 1.5px solid var(--border); border-radius: 16px; background: var(--off); box-shadow: 0 4px 20px rgba(26,20,16,0.07); }
 .t-card-wrap.t-active .t-card { background: var(--off); border-left: 4px solid var(--terra); border-color: var(--terra); box-shadow: 0 16px 56px rgba(122,31,61,0.14); }
@@ -168,6 +188,15 @@ body { background: var(--white); color: var(--ink); font-family: var(--font-b); 
 .t-dots { display: flex; gap: 0.5rem; }
 .t-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border2); border: none; cursor: pointer; padding: 0; transition: background 0.25s, transform 0.25s; }
 .t-dot.active { background: var(--terra); transform: scale(1.4); }
+
+/* CONTACT NEXT STEPS */
+.c-next { margin-top: 2.5rem; }
+.cn-label { font-family: var(--font-m); font-size: 0.63rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.2rem; }
+.cn-row { display: flex; align-items: flex-start; gap: 1rem; padding: 0.9rem 0; border-bottom: 1px solid var(--border); }
+.cn-row:last-child { border-bottom: none; }
+.cn-num { width: 24px; height: 24px; border-radius: 50%; background: var(--terra-l); border: 1px solid rgba(122,31,61,0.2); display: flex; align-items: center; justify-content: center; font-family: var(--font-m); font-size: 0.65rem; color: var(--terra); flex-shrink: 0; margin-top: 2px; }
+.cn-t { font-size: 0.88rem; font-weight: 600; color: var(--ink); margin-bottom: 0.15rem; }
+.cn-d { font-size: 0.8rem; color: var(--muted); font-weight: 300; line-height: 1.55; }
 
 /* CONTACT */
 .contact { padding: 7rem 5rem; background: var(--white); display: grid; grid-template-columns: 1fr 1.1fr; gap: 7rem; align-items: start; }
@@ -196,7 +225,9 @@ body { background: var(--white); color: var(--ink); font-family: var(--font-b); 
 
 /* FOOTER */
 footer { background: var(--ink); padding: 4.5rem 5rem; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; }
-.f-tagline { font-size: 0.86rem; color: rgba(255,255,255,0.35); line-height: 1.75; max-width: 260px; margin: 1rem 0 1.8rem; font-weight: 300; }
+.f-tagline { font-size: 0.86rem; color: rgba(255,255,255,0.35); line-height: 1.75; max-width: 260px; margin: 1rem 0 1rem; font-weight: 300; }
+.f-location { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1.8rem; }
+.f-location span { font-size: 0.8rem; color: rgba(255,255,255,0.25); font-weight: 300; }
 .f-social { display: flex; gap: 0.7rem; }
 .sl { width: 34px; height: 34px; border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; display: flex; align-items: center; justify-content: center; text-decoration: none; color: rgba(255,255,255,0.35); font-size: 0.78rem; font-weight: 600; transition: all 0.2s; }
 .sl:hover { border-color: var(--terra3); color: var(--terra3); }
@@ -242,7 +273,10 @@ footer { background: var(--ink); padding: 4.5rem 5rem; display: grid; grid-templ
   .v-nav { padding: 1.2rem 2rem; }
   .nav-links { display: none; }
   .hero { grid-template-columns: 1fr; padding: 8rem 2rem 3rem; gap: 3rem; }
-  .services, .how, .about, .why, .testimonials, .contact { padding: 5rem 2rem; }
+  .services, .how, .about, .why, .testimonials, .pricing, .contact { padding: 5rem 2rem; }
+  .pr-grid { grid-template-columns: 1fr; }
+  .pr-featured { transform: none; }
+  .pr-featured:hover { transform: translateY(-3px); }
   .svc-grid { grid-template-columns: repeat(2, 1fr); }
   .steps { grid-template-columns: 1fr 1fr; }
   .steps::before { display: none; }
