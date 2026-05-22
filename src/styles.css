@@ -61,7 +61,6 @@ body { background: var(--white); color: var(--ink); font-family: var(--font-b); 
 .hcs.accent {
   background: rgba(134, 29, 70, 0.08);
   color: var(--ink);
-  border: 1px solid rgba(134, 29, 70, 0.12);
 }
 .hcs.accent .hcs-l {
   color: rgba(20, 10, 10, 0.55);
