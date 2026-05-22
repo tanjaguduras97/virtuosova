@@ -145,6 +145,7 @@ function VirtuosoHome() {
   const scrolled = useScrollNav()
   const [submitted, setSubmitted] = useState(false)
   const [formError, setFormError] = useState('')
+  const [testiIdx, setTestiIdx] = useState(0)
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -232,8 +233,10 @@ function VirtuosoHome() {
             </div>
             <div className="hc-foot">
               <div className="hcf-avs">
-                {['T', 'U', 'M', 'A', 'K'].map((l) => (
-                  <div key={l} className="hcf-av">{l}</div>
+                {['specialist-1.jpg','specialist-2.jpg','specialist-3.jpg','specialist-4.jpg','specialist-5.jpg'].map((src) => (
+                  <div key={src} className="hcf-av">
+                    <img src={`/${src}`} alt="Specialist" loading="lazy" />
+                  </div>
                 ))}
               </div>
               <div className="hcf-t">
@@ -280,6 +283,54 @@ function VirtuosoHome() {
         </div>
       </section>
 
+      {/* TESTIMONIALS */}
+      <section className="testimonials">
+        <div className="sh reveal">
+          <div>
+            <span className="sec-label">Client Stories</span>
+            <h2 className="sec-title">The <em>Results</em> Speak.</h2>
+          </div>
+          <p className="sd">From solopreneurs to growing teams — here's what working with Virtuoso looks like.</p>
+        </div>
+        {(() => {
+          const prev = (testiIdx - 1 + TESTIMONIALS.length) % TESTIMONIALS.length
+          const next = (testiIdx + 1) % TESTIMONIALS.length
+          const card = (t: typeof TESTIMONIALS[0], role: 'active' | 'side', onClick?: () => void) => (
+            <div className={`t-card-wrap${role === 'active' ? ' t-active' : ''}`} onClick={onClick} style={onClick ? { cursor: 'pointer' } : undefined}>
+              <div className="t-card">
+                <div className="t-body">
+                  <div className="t-top">
+                    <div className="t-av-lg"><img src={t.photo} alt={t.name} loading="lazy" /></div>
+                    <div>
+                      <div className="t-name">{t.name}</div>
+                      <div className="t-role">{t.role}</div>
+                    </div>
+                  </div>
+                  <div className="t-stars">★★★★★</div>
+                  <p className="t-text">{t.text}</p>
+                </div>
+              </div>
+            </div>
+          )
+          return (
+            <div className="t-stage">
+              {card(TESTIMONIALS[prev], 'side', () => setTestiIdx(prev))}
+              {card(TESTIMONIALS[testiIdx], 'active')}
+              {card(TESTIMONIALS[next], 'side', () => setTestiIdx(next))}
+            </div>
+          )
+        })()}
+        <div className="t-controls">
+          <button className="t-arrow" onClick={() => setTestiIdx((i) => (i - 1 + TESTIMONIALS.length) % TESTIMONIALS.length)} aria-label="Previous">&#8249;</button>
+          <div className="t-dots">
+            {TESTIMONIALS.map((_, i) => (
+              <button key={i} className={'t-dot' + (i === testiIdx ? ' active' : '')} onClick={() => setTestiIdx(i)} aria-label={`Testimonial ${i + 1}`} />
+            ))}
+          </div>
+          <button className="t-arrow" onClick={() => setTestiIdx((i) => (i + 1) % TESTIMONIALS.length)} aria-label="Next">&#8250;</button>
+        </div>
+      </section>
+
       {/* ABOUT */}
       <section className="about" id="about">
         <div className="about-left reveal">
@@ -315,23 +366,16 @@ function VirtuosoHome() {
           </div>
         </div>
         <div className="about-right reveal">
-          <div className="about-visual">
-            <div className="about-visual-body">
-              <div className="about-quote about-quote-float">
-                We're not just a team — we're a{' '}
-                <span>family</span> passionate about making your life easier.
-              </div>
-              <div className="about-team-row about-team-float">
-                <div className="at-ico">
-                  <img src="/tanja.jpg" alt="Tanja, Founder & CEO" loading="lazy" />
-                </div>
-                <div>
-                  <div className="at-lbl">Tanja — Founder &amp; CEO</div>
-                  <div className="at-val">
-                    Connecting businesses worldwide with Europe-based specialists
-                  </div>
-                </div>
-              </div>
+          <div className="founder-card">
+            <img src="/tanja.jpg" alt="Tanja, Founder & CEO" className="founder-photo" loading="lazy" />
+            <div className="founder-body">
+              <div className="founder-label">Tanja — Founder &amp; CEO</div>
+              <div className="founder-headline">Building the team I always needed.</div>
+              <p className="founder-quote">
+                "I started Virtuoso because I know what it's like to wear too many hats.
+                Every specialist on our team is hand-picked for their craft — and they show up
+                each day genuinely dedicated to making your business run better."
+              </p>
             </div>
           </div>
         </div>
@@ -343,8 +387,7 @@ function VirtuosoHome() {
           <div>
             <span className="sec-label">How It Works</span>
             <h2 className="sec-title on-dark">
-              From First Call to<br />
-              <em>Fully Supported.</em>
+              From First Call to <em>Fully Supported.</em>
             </h2>
           </div>
           <p className="sd on-dark">
@@ -402,41 +445,6 @@ function VirtuosoHome() {
               <div className="wt">
                 <h4>{w.t}</h4>
                 <p>{w.d}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* TESTIMONIALS */}
-      <section className="testimonials">
-        <div className="sh reveal">
-          <div>
-            <span className="sec-label">Client Stories</span>
-            <h2 className="sec-title">
-              The <em>Results</em> Speak.
-            </h2>
-          </div>
-          <p className="sd">
-            From solopreneurs to growing teams — here's what working with Virtuoso
-            looks like.
-          </p>
-        </div>
-        <div className="t-grid">
-          {TESTIMONIALS.map((t) => (
-            <div key={t.name} className="t-card reveal">
-              <div className="t-body">
-                <div className="t-stars">★★★★★</div>
-                <p className="t-text">{t.text}</p>
-                <div className="t-author">
-                  <div className="t-avatar">
-                    <img src={t.photo} alt={t.name} loading="lazy" />
-                  </div>
-                  <div>
-                    <div className="t-name">{t.name}</div>
-                    <div className="t-role">{t.role}</div>
-                  </div>
-                </div>
               </div>
             </div>
           ))}
