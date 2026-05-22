@@ -18,8 +18,8 @@ export default {
       const service   = form.get('service')   || '';
       const message   = form.get('message')   || '';
 
-      if (!email || !message) {
-        return new Response('Email and message are required.', { status: 400 });
+      if (!email) {
+        return new Response('Email is required.', { status: 400 });
       }
 
       const resendRes = await fetch('https://api.resend.com/emails', {

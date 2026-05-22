@@ -364,23 +364,16 @@ function VirtuosoHome() {
           </div>
         </div>
         <div className="about-right reveal">
-          <div className="about-visual">
-            <div className="about-visual-body">
-              <div className="about-quote about-quote-float">
-                We're not just a team — we're a{' '}
-                <span>family</span> passionate about making your life easier.
-              </div>
-              <div className="about-team-row about-team-float">
-                <div className="at-ico">
-                  <img src="/tanja.jpg" alt="Tanja, Founder & CEO" loading="lazy" />
-                </div>
-                <div>
-                  <div className="at-lbl">Tanja — Founder &amp; CEO</div>
-                  <div className="at-val">
-                    Connecting businesses worldwide with Europe-based specialists
-                  </div>
-                </div>
-              </div>
+          <div className="founder-card">
+            <img src="/tanja.jpg" alt="Tanja, Founder & CEO" className="founder-photo" loading="lazy" />
+            <div className="founder-body">
+              <div className="founder-label">Tanja — Founder &amp; CEO</div>
+              <div className="founder-headline">Building the team I always needed.</div>
+              <p className="founder-quote">
+                "I started Virtuoso because I know what it's like to wear too many hats.
+                Every specialist on our team is hand-picked for their craft — and they show up
+                each day genuinely dedicated to making your business run better."
+              </p>
             </div>
           </div>
         </div>
