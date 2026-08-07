@@ -127,9 +127,18 @@ function LogoSvg({ color = '#7a1f3d' }: { color?: string }) {
 
 function useReveal() {
   useEffect(() => {
+    const observers: IntersectionObserver[] = []
     document.querySelectorAll('.reveal').forEach((el) => {
-      new IntersectionObserver(([e]) => e.isIntersecting && el.classList.add('visible'), { threshold: 0.1 }).observe(el)
+      const observer = new IntersectionObserver(([e]) => {
+        if (e.isIntersecting) {
+          el.classList.add('visible')
+          observer.disconnect()
+        }
+      }, { threshold: 0.1 })
+      observer.observe(el)
+      observers.push(observer)
     })
+    return () => observers.forEach((o) => o.disconnect())
   }, [])
 }
 
@@ -151,6 +160,17 @@ function VirtuosoHome() {
   const [formError, setFormError] = useState('')
   const [testiIdx, setTestiIdx] = useState(0)
   const [menuOpen, setMenuOpen] = useState(false)
+
+  useEffect(() => {
+    if (!menuOpen) return
+    document.body.style.overflow = 'hidden'
+    const onKeyDown = (e: KeyboardEvent) => e.key === 'Escape' && setMenuOpen(false)
+    window.addEventListener('keydown', onKeyDown)
+    return () => {
+      document.body.style.overflow = ''
+      window.removeEventListener('keydown', onKeyDown)
+    }
+  }, [menuOpen])
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -332,7 +352,15 @@ function VirtuosoHome() {
           const prev = (testiIdx - 1 + TESTIMONIALS.length) % TESTIMONIALS.length
           const next = (testiIdx + 1) % TESTIMONIALS.length
           const card = (t: typeof TESTIMONIALS[0], role: 'active' | 'side', onClick?: () => void) => (
-            <div className={`t-card-wrap${role === 'active' ? ' t-active' : ''}`} onClick={onClick} style={onClick ? { cursor: 'pointer' } : undefined}>
+            <div
+              className={`t-card-wrap${role === 'active' ? ' t-active' : ''}`}
+              onClick={onClick}
+              style={onClick ? { cursor: 'pointer' } : undefined}
+              role={onClick ? 'button' : undefined}
+              tabIndex={onClick ? 0 : undefined}
+              aria-label={onClick ? `Show testimonial from ${t.name}` : undefined}
+              onKeyDown={onClick ? (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick() } } : undefined}
+            >
               <div className="t-card">
                 <div className="t-body">
                   <div className="t-top">
@@ -577,12 +605,12 @@ function VirtuosoHome() {
           <div className="f-title">Let's Talk</div>
           <div className="f-sub">Free discovery call · No commitment required</div>
           {submitted && (
-            <div className="f-success">
+            <div className="f-success" role="status" aria-live="polite">
               Thank you! Your inquiry has been sent successfully. We’ll get back to you within 1 business day.
             </div>
           )}
           {formError && (
-            <div className="f-error">{formError}</div>
+            <div className="f-error" role="alert" aria-live="assertive">{formError}</div>
           )}
       
 <form onSubmit={handleSubmit} style={{ display: 'contents' }}>
@@ -681,10 +709,10 @@ function VirtuosoHome() {
         <div className="fc">
           <h5>Legal</h5>
           <ul>
-           <a href="/privacy-policy">Privacy Policy</a>
-<a href="/terms">Terms of Service</a>
-<a href="/terms">Confidentiality</a>
-<a href="/cookies">Cookie Policy</a>
+            <li><a href="/privacy-policy">Privacy Policy</a></li>
+            <li><a href="/terms">Terms of Service</a></li>
+            <li><a href="/terms">Confidentiality</a></li>
+            <li><a href="/cookies">Cookie Policy</a></li>
           </ul>
         </div>
       </footer>
