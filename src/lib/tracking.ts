@@ -8,7 +8,7 @@
 //
 // Until real values are set, the gtag script is not loaded at all, so nothing fires and no
 // placeholder data pollutes any account.
-export const GA4_MEASUREMENT_ID = 'G-XXXXXXXXXX'
+export const GA4_MEASUREMENT_ID = 'G-D0YXBBV2KG'
 export const GOOGLE_ADS_ID = 'AW-XXXXXXXXX'
 export const GOOGLE_ADS_CONVERSION_LABEL = 'XXXXXXXXXX'
 
