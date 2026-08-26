@@ -1,5 +1,11 @@
 import server from './dist/server/server.js';
 
+const ALLOWED_ORIGINS = new Set([
+  'https://virtuosovirtualassistants.com',
+  'https://www.virtuosovirtualassistants.com',
+]);
+const MIN_SUBMIT_MS = 1500;
+
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
@@ -10,7 +16,24 @@ export default {
         return new Response('Method Not Allowed', { status: 405 });
       }
 
+      const origin = request.headers.get('origin');
+      if (origin && !ALLOWED_ORIGINS.has(origin)) {
+        return new Response('Invalid origin.', { status: 403 });
+      }
+
       const form = await request.formData();
+
+      // Honeypot: bots that autofill every field trip this hidden input.
+      // Pretend success so they don't learn to skip it.
+      if (form.get('website')) {
+        return Response.json({ success: true });
+      }
+
+      const elapsedMs = Number(form.get('elapsedMs') || 0);
+      if (elapsedMs > 0 && elapsedMs < MIN_SUBMIT_MS) {
+        return Response.json({ success: true });
+      }
+
       const firstName = form.get('firstName') || '';
       const lastName  = form.get('lastName')  || '';
       const email     = form.get('email')     || '';

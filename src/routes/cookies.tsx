@@ -2,6 +2,17 @@ import { createFileRoute } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/cookies')({
   component: Cookies,
+  head: () => ({
+    meta: [
+      { title: 'Cookie Policy | Virtuoso Virtual Assistants' },
+      {
+        name: 'description',
+        content: 'How Virtuoso Virtual Assistants uses cookies on our website.',
+      },
+      { name: 'robots', content: 'noindex, follow' },
+    ],
+    links: [{ rel: 'canonical', href: 'https://virtuosovirtualassistants.com/cookies' }],
+  }),
 })
 
 function Cookies() {

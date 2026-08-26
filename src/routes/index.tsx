@@ -1,17 +1,27 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+
+const HOME_TITLE = 'Virtuoso | Virtual Assistant Agency — Europe-Based VA Services'
+const HOME_DESCRIPTION =
+  'Get matched with a vetted Europe-based VA specialist — social media, content creation, executive support, automation, and more.'
+const HOME_URL = 'https://virtuosovirtualassistants.com/'
+const HOME_IMAGE = 'https://virtuosovirtualassistants.com/specialist-1.png'
 
 export const Route = createFileRoute('/')({
   component: VirtuosoHome,
   head: () => ({
     meta: [
-      { title: 'Virtuoso | Virtual Assistant Agency — Europe-Based VA Services' },
-      {
-        name: 'description',
-        content:
-          'Get matched with a vetted Europe-based VA specialist — social media, content creation, executive support, automation, and more.',
-      },
+      { title: HOME_TITLE },
+      { name: 'description', content: HOME_DESCRIPTION },
+      { property: 'og:title', content: HOME_TITLE },
+      { property: 'og:description', content: HOME_DESCRIPTION },
+      { property: 'og:url', content: HOME_URL },
+      { property: 'og:image', content: HOME_IMAGE },
+      { name: 'twitter:title', content: HOME_TITLE },
+      { name: 'twitter:description', content: HOME_DESCRIPTION },
+      { name: 'twitter:image', content: HOME_IMAGE },
     ],
+    links: [{ rel: 'canonical', href: HOME_URL }],
   }),
 })
 
@@ -151,13 +161,23 @@ function VirtuosoHome() {
   const [formError, setFormError] = useState('')
   const [testiIdx, setTestiIdx] = useState(0)
   const [menuOpen, setMenuOpen] = useState(false)
+  const formRenderedAt = useRef(Date.now())
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     setFormError('')
     const form = e.currentTarget
+    const data = new FormData(form)
+    // Honeypot: real visitors never fill this (it's visually hidden). Bots that
+    // autofill every field trip it, so pretend success without sending anything.
+    if (data.get('website')) {
+      setSubmitted(true)
+      form.reset()
+      return
+    }
+    data.set('elapsedMs', String(Date.now() - formRenderedAt.current))
     try {
-      const res = await fetch('/api/contact', { method: 'POST', body: new FormData(form) })
+      const res = await fetch('/api/contact', { method: 'POST', body: data })
       if (res.ok) {
         setSubmitted(true)
         form.reset()
@@ -586,7 +606,12 @@ function VirtuosoHome() {
           )}
       
 <form onSubmit={handleSubmit} style={{ display: 'contents' }}>
-          
+
+            <div className="sr-only" aria-hidden="true">
+              <label htmlFor="website">Leave this field blank</label>
+              <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+            </div>
+
             <div className="f-row">
               <div className="fg">
                 <label htmlFor="fn">First Name</label>

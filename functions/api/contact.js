@@ -1,6 +1,28 @@
+const ALLOWED_ORIGINS = new Set([
+  "https://virtuosovirtualassistants.com",
+  "https://www.virtuosovirtualassistants.com",
+]);
+const MIN_SUBMIT_MS = 1500;
+
 export async function onRequestPost({ request, env }) {
   try {
+    const origin = request.headers.get("origin");
+    if (origin && !ALLOWED_ORIGINS.has(origin)) {
+      return Response.json({ error: "Invalid origin." }, { status: 403 });
+    }
+
     const form = await request.formData();
+
+    // Honeypot: bots that autofill every field trip this hidden input.
+    // Pretend success so they don't learn to skip it.
+    if (form.get("website")) {
+      return Response.json({ success: true });
+    }
+
+    const elapsedMs = Number(form.get("elapsedMs") || 0);
+    if (elapsedMs > 0 && elapsedMs < MIN_SUBMIT_MS) {
+      return Response.json({ success: true });
+    }
 
     const firstName = form.get("firstName") || "";
     const lastName = form.get("lastName") || "";

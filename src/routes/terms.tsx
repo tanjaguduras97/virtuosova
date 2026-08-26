@@ -2,6 +2,17 @@ import { createFileRoute } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/terms')({
   component: Terms,
+  head: () => ({
+    meta: [
+      { title: 'Terms of Service | Virtuoso Virtual Assistants' },
+      {
+        name: 'description',
+        content: 'The terms of service governing use of Virtuoso Virtual Assistants and our client engagements.',
+      },
+      { name: 'robots', content: 'noindex, follow' },
+    ],
+    links: [{ rel: 'canonical', href: 'https://virtuosovirtualassistants.com/terms' }],
+  }),
 })
 
 function Terms() {

@@ -2,6 +2,17 @@ import { createFileRoute } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/privacy-policy')({
   component: PrivacyPolicy,
+  head: () => ({
+    meta: [
+      { title: 'Privacy Policy | Virtuoso Virtual Assistants' },
+      {
+        name: 'description',
+        content: 'How Virtuoso collects, uses, and protects information submitted through our website.',
+      },
+      { name: 'robots', content: 'noindex, follow' },
+    ],
+    links: [{ rel: 'canonical', href: 'https://virtuosovirtualassistants.com/privacy-policy' }],
+  }),
 })
 
 function PrivacyPolicy() {
