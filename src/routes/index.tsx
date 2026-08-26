@@ -1,6 +1,8 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { useEffect, useRef, useState } from 'react'
-import { trackContactFormLead } from '../lib/tracking'
+import { useEffect, useState } from 'react'
+import { ContactForm } from '../components/ContactForm'
+import { LogoSvg, MARQUEE_ITEMS, SERVICES, TESTIMONIALS } from '../data/site-content'
+import { useReveal } from '../hooks/useReveal'
 
 const HOME_TITLE = 'Virtuoso | Virtual Assistant Agency — Europe-Based VA Services'
 const HOME_DESCRIPTION =
@@ -26,124 +28,6 @@ export const Route = createFileRoute('/')({
   }),
 })
 
-const S = (p: React.SVGProps<SVGSVGElement>) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" width="22" height="22" {...p} />
-)
-
-const SERVICES = [
-  {
-    icon: <S><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 10l2 2 4-4M9 15h6"/></S>,
-    name: 'Project Management',
-    desc: 'Organized timelines, cross-team coordination, and task tracking so your projects ship on time.',
-  },
-  {
-    icon: <S><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 9h20M8 13l-2 2 2 2M16 13l2 2-2 2M12 18l1-4"/></S>,
-    name: 'Website Development',
-    desc: 'Landing pages and full websites built to look great, load fast, and convert visitors into clients.',
-  },
-  {
-    icon: <S><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.4 10.9l7.2-4M8.4 13.1l7.2 4"/></S>,
-    name: 'Social Media Management',
-    desc: 'Strategy, scheduling, community management, and growth across all your platforms — handled completely.',
-  },
-  {
-    icon: <S><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></S>,
-    name: 'Content Creation',
-    desc: 'Engaging posts, captions, newsletters, and brand storytelling crafted to connect with your audience.',
-  },
-  {
-    icon: <S><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></S>,
-    name: 'Photo & Video Editing',
-    desc: 'Professional editing and post-production that keeps your content polished, on-brand, and scroll-stopping.',
-  },
-  {
-    icon: <S><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2M12 12v4M10 14h4"/></S>,
-    name: 'Executive Support',
-    desc: 'Calendar control, inbox management, research, and strategic admin for busy CEOs and leaders.',
-  },
-  {
-    icon: <S><path d="M3 18v-6a9 9 0 0118 0v6"/><path d="M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3zM3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3z"/></S>,
-    name: 'Customer Support',
-    desc: 'Professional, responsive customer service via calls — keeping your clients happy and loyal.',
-  },
-  {
-    icon: <S><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1l2.1-2.1M17 7l2.1-2.1"/></S>,
-    name: 'Automation Setup',
-    desc: 'Smart workflow automations and tool integrations that save hours every week.',
-  },
-]
-
-const TESTIMONIALS = [
-  {
-    text: '"Working with Tanja as my Operations Manager has been a game-changer. I didn\'t have to worry about recruitment or meetings — she handled it all. I\'ve found Eastern European VAs to be not only cost-effective but incredibly efficient."',
-    name: 'Greig Wells',
-    role: 'Founder, Love Thy Neighbor Marketing & Virtual Dinner Party',
-    photo: '/greig-wells.png',
-  },
-  {
-    text: '"I am very much impressed with Tanja and my virtual assistant, Una! Tanja personally took time to introduce us and make sure everything flowed smoothly. Una is smart, efficient, kind, and communicates quickly and well."',
-    name: 'KennaRae Miller Thomas',
-    role: 'Life & Business Coach',
-    photo: '/kennarae.png',
-  },
-  {
-    text: '"I deeply appreciate that my VA stays ahead of the curve. I ask for help, go to sleep, and wake up for it to be done! I feel like Snow White who has her 7 gnomes keeping her business house clean while she sleeps."',
-    name: 'Sylvia Becker Hill',
-    role: 'Authentic Living & Prosperity Neuroplastician for Professional Women',
-    photo: '/sylvia.png',
-  },
-  {
-    text: '"Tanja is a fantastic project manager. She\'s been on the team since March and is my right hand woman on all things. She\'s helped me simplify my systems, given me more free time to provide excellent care to my clients, and keeps \'Elevate Your Health Plan\' running smoothly and efficiently."',
-    name: 'Mary Hunt',
-    role: 'Founder, Elevate Your Health Plan',
-    photo: '/mary-hunt.jpg',
-  },
-]
-
-const MARQUEE_ITEMS = [
-  'Social Media Management',
-  'Content Creation',
-  'Project Management',
-  'Website Development',
-  'Executive Support',
-  'Automation Setup',
-  'Photo & Video Editing',
-  'Customer Support',
-]
-
-function LogoSvg({ color = '#7a1f3d' }: { color?: string }) {
-  return (
-    <svg
-      className="logo-svg"
-      viewBox="0 0 32 32"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <line
-        x1="16" y1="3" x2="16" y2="14"
-        stroke={color} strokeWidth="2.8" strokeLinecap="round"
-      />
-      <line
-        x1="16" y1="14" x2="6" y2="27"
-        stroke={color} strokeWidth="2.8" strokeLinecap="round"
-      />
-      <line
-        x1="16" y1="14" x2="26" y2="27"
-        stroke={color} strokeWidth="2.8" strokeLinecap="round"
-      />
-      <circle cx="16" cy="3" r="2" fill={color} />
-    </svg>
-  )
-}
-
-function useReveal() {
-  useEffect(() => {
-    document.querySelectorAll('.reveal').forEach((el) => {
-      new IntersectionObserver(([e]) => e.isIntersecting && el.classList.add('visible'), { threshold: 0.1 }).observe(el)
-    })
-  }, [])
-}
-
 function useScrollNav() {
   const [scrolled, setScrolled] = useState(false)
   useEffect(() => {
@@ -158,39 +42,8 @@ function useScrollNav() {
 function VirtuosoHome() {
   useReveal()
   const scrolled = useScrollNav()
-  const [submitted, setSubmitted] = useState(false)
-  const [formError, setFormError] = useState('')
   const [testiIdx, setTestiIdx] = useState(0)
   const [menuOpen, setMenuOpen] = useState(false)
-  const formRenderedAt = useRef(Date.now())
-
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault()
-    setFormError('')
-    const form = e.currentTarget
-    const data = new FormData(form)
-    // Honeypot: real visitors never fill this (it's visually hidden). Bots that
-    // autofill every field trip it, so pretend success without sending anything.
-    if (data.get('website')) {
-      setSubmitted(true)
-      form.reset()
-      return
-    }
-    data.set('elapsedMs', String(Date.now() - formRenderedAt.current))
-    try {
-      const res = await fetch('/api/contact', { method: 'POST', body: data })
-      if (res.ok) {
-        setSubmitted(true)
-        form.reset()
-        trackContactFormLead()
-      } else {
-        setFormError('Something went wrong. Please try again or email us directly.')
-      }
-    } catch {
-      setFormError('Could not send — please check your connection and try again.')
-    }
-  }
-
 
   return (
     <>
@@ -595,65 +448,7 @@ function VirtuosoHome() {
             ))}
           </div>
         </div>
-        <div className="c-form reveal" id="contact-form">
-          <div className="f-title">Let's Talk</div>
-          <div className="f-sub">Free discovery call · No commitment required</div>
-          {submitted && (
-            <div className="f-success">
-              Thank you! Your inquiry has been sent successfully. We’ll get back to you within 1 business day.
-            </div>
-          )}
-          {formError && (
-            <div className="f-error">{formError}</div>
-          )}
-      
-<form onSubmit={handleSubmit} style={{ display: 'contents' }}>
-
-            <div className="sr-only" aria-hidden="true">
-              <label htmlFor="website">Leave this field blank</label>
-              <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" />
-            </div>
-
-            <div className="f-row">
-              <div className="fg">
-                <label htmlFor="fn">First Name</label>
-                <input id="fn" name="firstName" type="text" placeholder="Jane" required />
-              </div>
-              <div className="fg">
-                <label htmlFor="ln">Last Name</label>
-                <input id="ln" name="lastName" type="text" placeholder="Smith" required />
-              </div>
-            </div>
-            <div className="fg">
-              <label htmlFor="em">Email Address</label>
-              <input id="em" name="email" type="email" placeholder="jane@yourcompany.com" required />
-            </div>
-            <div className="fg">
-              <label htmlFor="co">Business / Company</label>
-              <input id="co" name="company" type="text" placeholder="Your Company" />
-            </div>
-            <div className="fg">
-              <label htmlFor="sv">Service of Interest</label>
-              <select id="sv" name="service" defaultValue="">
-                <option value="" disabled>Select a service…</option>
-                {SERVICES.map((s) => (
-                  <option key={s.name}>{s.name}</option>
-                ))}
-                <option>Multiple / Not sure yet</option>
-              </select>
-            </div>
-            <div className="fg">
-              <label htmlFor="msg">Tell Us About Your Needs</label>
-              <textarea
-                id="msg"
-                name="message"
-                placeholder="What's taking up your time? What do you wish you had more support with?"
-              />
-            </div>
-            <button type="submit" className="f-submit">Send My Enquiry →</button>
-          </form>
-          <p className="f-note">We reply within 1 business day with a tailored proposal.</p>
-        </div>
+        <ContactForm />
       </section>
 
       {/* FOOTER */}
