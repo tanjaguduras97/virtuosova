@@ -2,6 +2,7 @@ import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
 
 
 import '../styles.css'
+import { GA4_MEASUREMENT_ID, TRACKING_CONFIGURED } from '../lib/tracking'
 
 const SITE_URL = 'https://virtuosovirtualassistants.com'
 const SITE_NAME = 'Virtuoso Virtual Assistants'
@@ -72,6 +73,16 @@ function RootDocument({ children }: { children: React.ReactNode }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(LOCAL_BUSINESS_JSON_LD) }}
         />
+        {TRACKING_CONFIGURED && (
+          <>
+            <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA4_MEASUREMENT_ID}`} />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA4_MEASUREMENT_ID}');`,
+              }}
+            />
+          </>
+        )}
       </head>
       <body>
         {children}

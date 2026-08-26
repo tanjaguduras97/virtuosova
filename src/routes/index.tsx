@@ -1,5 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { useEffect, useRef, useState } from 'react'
+import { trackContactFormLead } from '../lib/tracking'
 
 const HOME_TITLE = 'Virtuoso | Virtual Assistant Agency — Europe-Based VA Services'
 const HOME_DESCRIPTION =
@@ -181,6 +182,7 @@ function VirtuosoHome() {
       if (res.ok) {
         setSubmitted(true)
         form.reset()
+        trackContactFormLead()
       } else {
         setFormError('Something went wrong. Please try again or email us directly.')
       }
