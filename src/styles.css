@@ -17,7 +17,7 @@
   --terra-l2: rgba(111,44,62,0.14);
   --ink:    #3a2a2e; /* warm dark ink — body text */
   --ink2:   #4a373c;
-  --muted:  #8a7d74;
+  --muted:  #6b5d54; /* darkened from the original design so it clears 4.5:1 on both cream and sand */
   --border: #e4d8c8;
   --border2:#d8c6ae;
   --font-d: 'Bricolage Grotesque', sans-serif; /* headings */
@@ -111,7 +111,7 @@ body { background: var(--off); color: var(--ink); font-family: var(--font-b); fo
 .steps::before { content: ''; position: absolute; top: 20px; left: 14%; right: 14%; height: 1px; background: repeating-linear-gradient(to right, rgba(111,44,62,0.25) 0, rgba(111,44,62,0.25) 5px, transparent 5px, transparent 13px); }
 .step { text-align: center; transition: transform 0.3s ease; cursor: default; }
 .step:hover { transform: scale(1.06); transition: transform 0.25s ease; }
-.step-n { width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; font-family: var(--font-m); font-size: 0.72rem; color: rgba(255,255,255,0.35); margin: 0 auto 1.8rem; position: relative; z-index: 1; transition: all 0.25s; }
+.step-n { width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; font-family: var(--font-m); font-size: 0.72rem; color: rgba(255,255,255,0.6); margin: 0 auto 1.8rem; position: relative; z-index: 1; transition: all 0.25s; }
 .step:hover .step-n { background: var(--terra); border-color: var(--terra); color: var(--white); }
 .step-title { font-family: var(--font-d); font-size: 1.4rem; font-weight: 600; color: var(--white); margin-bottom: 0.6rem; }
 .step-text { font-size: 0.92rem; color: rgba(255,255,255,0.82); line-height: 1.75; font-weight: 400; }
@@ -124,7 +124,7 @@ body { background: var(--off); color: var(--ink); font-family: var(--font-b); fo
 .wr { display: flex; align-items: flex-start; gap: 1.2rem; padding: 1.6rem 2rem; background: var(--white); transition: background 0.2s; }
 .wr:hover { background: var(--off); }
 .wi { width: 38px; height: 38px; border-radius: 8px; background: var(--terra-l); display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
-.wt h4 { font-weight: 600; font-size: 0.92rem; color: var(--ink); margin-bottom: 0.2rem; }
+.wt h3 { font-weight: 600; font-size: 0.92rem; color: var(--ink); margin-bottom: 0.2rem; }
 .wt p { font-size: 0.83rem; color: var(--muted); line-height: 1.6; font-weight: 400; }
 
 /* PRICING */
@@ -196,18 +196,18 @@ body { background: var(--off); color: var(--ink); font-family: var(--font-b); fo
 
 /* FOOTER */
 footer { background: var(--ink); padding: 4.5rem 5rem; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; }
-.f-tagline { font-size: 0.86rem; color: rgba(255,255,255,0.35); line-height: 1.75; max-width: 260px; margin: 1rem 0 1rem; font-weight: 400; }
+.f-tagline { font-size: 0.86rem; color: rgba(255,255,255,0.6); line-height: 1.75; max-width: 260px; margin: 1rem 0 1rem; font-weight: 400; }
 .f-location { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1.8rem; }
-.f-location span { font-size: 0.8rem; color: rgba(255,255,255,0.25); font-weight: 400; }
+.f-location span { font-size: 0.8rem; color: rgba(255,255,255,0.6); font-weight: 400; }
 .f-social { display: flex; gap: 0.7rem; }
 .sl { width: 34px; height: 34px; border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; display: flex; align-items: center; justify-content: center; text-decoration: none; color: rgba(255,255,255,0.35); font-size: 0.78rem; font-weight: 600; transition: all 0.2s; }
 .sl:hover { border-color: var(--terra3); color: var(--terra3); }
-.fc h5 { font-family: var(--font-m); font-size: 0.67rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-bottom: 1.4rem; }
+.fc h3 { font-family: var(--font-m); font-size: 0.67rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 1.4rem; }
 .fc ul { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
-.fc a { font-size: 0.87rem; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; font-weight: 400; }
+.fc a { font-size: 0.87rem; color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s; font-weight: 400; }
 .fc a:hover { color: var(--terra3); }
 .f-bottom { background: var(--ink); border-top: 1px solid rgba(255,255,255,0.06); padding: 1.5rem 5rem; display: flex; justify-content: space-between; align-items: center; }
-.f-bottom p { font-size: 0.77rem; color: rgba(255,255,255,0.25); font-weight: 400; }
+.f-bottom p { font-size: 0.77rem; color: rgba(255,255,255,0.6); font-weight: 400; }
 .f-bottom a { color: var(--terra3); text-decoration: none; }
 
 /* HERO — trust line + visual (2026 refresh) */

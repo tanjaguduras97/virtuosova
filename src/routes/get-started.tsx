@@ -56,6 +56,7 @@ function GetStarted() {
         <a href="#contact-form" className="nav-cta">Get My Quote</a>
       </nav>
 
+      <main>
       {/* HERO */}
       <section className="hero">
         <div className="hero-left">
@@ -148,7 +149,7 @@ function GetStarted() {
             <div key={w.t} className="wr">
               <div className="wi">{w.i}</div>
               <div className="wt">
-                <h4>{w.t}</h4>
+                <h3>{w.t}</h3>
                 <p>{w.d}</p>
               </div>
             </div>
@@ -188,7 +189,7 @@ function GetStarted() {
               <div key={w.t} className="wr">
                 <div className="wi">{w.i}</div>
                 <div className="wt">
-                  <h4>{w.t}</h4>
+                  <h3>{w.t}</h3>
                   <p>{w.d}</p>
                 </div>
               </div>
@@ -257,6 +258,7 @@ function GetStarted() {
         </div>
         <ContactForm title="Get My Free Quote" subtitle="Free discovery call · No commitment required" />
       </section>
+      </main>
 
       {/* MINIMAL FOOTER — no site nav, just brand + required legal link */}
       <footer>
@@ -277,9 +279,9 @@ function GetStarted() {
           </div>
         </div>
         <div className="fc">
-          <h5>Legal</h5>
+          <h3>Legal</h3>
           <ul>
-            <a href="/privacy-policy">Privacy Policy</a>
+            <li><a href="/privacy-policy">Privacy Policy</a></li>
           </ul>
         </div>
       </footer>

@@ -156,6 +156,7 @@ function VirtuosoHome() {
         </div>
       )}
 
+      <main>
       {/* HERO */}
       <section className="hero">
         <div className="hero-left">
@@ -260,7 +261,7 @@ function VirtuosoHome() {
             <div key={p.title} className="wr">
               <div className="wi">{p.icon}</div>
               <div className="wt">
-                <h4>{p.title}</h4>
+                <h3>{p.title}</h3>
                 <p>{p.desc}</p>
               </div>
             </div>
@@ -373,7 +374,7 @@ function VirtuosoHome() {
             <div key={tier.title} className="wr">
               <div className="wi">{tier.icon}</div>
               <div className="wt">
-                <h4>{tier.title} — {tier.price}</h4>
+                <h3>{tier.title} — {tier.price}</h3>
                 <p>{tier.desc}</p>
               </div>
             </div>
@@ -432,6 +433,7 @@ function VirtuosoHome() {
         </div>
         <ContactForm />
       </section>
+      </main>
 
       {/* FOOTER */}
       <footer>
@@ -464,7 +466,7 @@ function VirtuosoHome() {
           </div>
         </div>
         <div className="fc">
-          <h5>Services</h5>
+          <h3>Services</h3>
           <ul>
             <li><a href="#services">Project Management</a></li>
             <li><a href="#services">Website Development</a></li>
@@ -475,7 +477,7 @@ function VirtuosoHome() {
           </ul>
         </div>
         <div className="fc">
-          <h5>Company</h5>
+          <h3>Company</h3>
           <ul>
             <li><a href="#who-we-help">Who We Help</a></li>
             <li><a href="#how-it-works">How It Works</a></li>
@@ -484,12 +486,12 @@ function VirtuosoHome() {
           </ul>
         </div>
         <div className="fc">
-          <h5>Legal</h5>
+          <h3>Legal</h3>
           <ul>
-           <a href="/privacy-policy">Privacy Policy</a>
-<a href="/terms">Terms of Service</a>
-<a href="/terms">Confidentiality</a>
-<a href="/cookies">Cookie Policy</a>
+            <li><a href="/privacy-policy">Privacy Policy</a></li>
+            <li><a href="/terms">Terms of Service</a></li>
+            <li><a href="/terms">Confidentiality</a></li>
+            <li><a href="/cookies">Cookie Policy</a></li>
           </ul>
         </div>
       </footer>
