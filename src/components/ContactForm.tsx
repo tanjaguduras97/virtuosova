@@ -3,7 +3,7 @@ import { SERVICES } from '../data/site-content'
 import { trackContactFormLead } from '../lib/tracking'
 
 export function ContactForm({
-  title = "Let's Talk",
+  title = 'Send an enquiry',
   subtitle = 'Free discovery call · No commitment required',
 }: {
   title?: string
@@ -25,6 +25,9 @@ export function ContactForm({
       form.reset()
       return
     }
+    // Backend groups the sender's name as firstName + lastName; the form only
+    // collects one "Name" field, so pass the whole thing through as firstName.
+    data.set('firstName', String(data.get('name') || ''))
     data.set('elapsedMs', String(Date.now() - formRenderedAt.current))
     try {
       const res = await fetch('/api/contact', { method: 'POST', body: data })
@@ -33,10 +36,10 @@ export function ContactForm({
         form.reset()
         trackContactFormLead()
       } else {
-        setFormError('Something went wrong. Please try again or email us directly.')
+        setFormError('Something went wrong — email tanja@virtuosovirtualassistants.com instead.')
       }
     } catch {
-      setFormError('Could not send — please check your connection and try again.')
+      setFormError('Something went wrong — email tanja@virtuosovirtualassistants.com instead.')
     }
   }
 
@@ -46,7 +49,7 @@ export function ContactForm({
       <div className="f-sub">{subtitle}</div>
       {submitted && (
         <div className="f-success">
-          Thank you! Your inquiry has been sent successfully. We’ll get back to you within 1 business day.
+          Sent. You’ll hear from Tanja within one business day.
         </div>
       )}
       {formError && <div className="f-error">{formError}</div>}
@@ -58,22 +61,16 @@ export function ContactForm({
           <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" />
         </div>
 
-        <div className="f-row">
-          <div className="fg">
-            <label htmlFor="fn">First Name</label>
-            <input id="fn" name="firstName" type="text" placeholder="Jane" required />
-          </div>
-          <div className="fg">
-            <label htmlFor="ln">Last Name</label>
-            <input id="ln" name="lastName" type="text" placeholder="Smith" required />
-          </div>
+        <div className="fg">
+          <label htmlFor="nm">Name</label>
+          <input id="nm" name="name" type="text" placeholder="Jane Smith" required />
         </div>
         <div className="fg">
-          <label htmlFor="em">Email Address</label>
+          <label htmlFor="em">Email</label>
           <input id="em" name="email" type="email" placeholder="jane@yourcompany.com" required />
         </div>
         <div className="fg">
-          <label htmlFor="co">Business / Company</label>
+          <label htmlFor="co">Company (optional)</label>
           <input id="co" name="company" type="text" placeholder="Your Company" />
         </div>
         <div className="fg">
@@ -87,14 +84,14 @@ export function ContactForm({
           </select>
         </div>
         <div className="fg">
-          <label htmlFor="msg">Tell Us About Your Needs</label>
+          <label htmlFor="msg">What do you need?</label>
           <textarea
             id="msg"
             name="message"
             placeholder="What's taking up your time? What do you wish you had more support with?"
           />
         </div>
-        <button type="submit" className="f-submit">Send My Enquiry →</button>
+        <button type="submit" className="f-submit">Send enquiry</button>
       </form>
       <p className="f-note">We reply within 1 business day with a tailored proposal.</p>
     </div>

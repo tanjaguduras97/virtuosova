@@ -6,10 +6,10 @@ import { GA4_MEASUREMENT_ID, TRACKING_CONFIGURED } from '../lib/tracking'
 
 const SITE_URL = 'https://virtuosovirtualassistants.com'
 const SITE_NAME = 'Virtuoso Virtual Assistants'
-const DEFAULT_TITLE = 'Virtuoso | Virtual Assistant Agency'
+const DEFAULT_TITLE = 'Virtuoso | Virtual Assistant Agency — One Team for Marketing, Operations & Support'
 const DEFAULT_DESCRIPTION =
-  'Get matched with a vetted Europe-based VA specialist — social media, content creation, executive support, automation, and more.'
-const DEFAULT_OG_IMAGE = `${SITE_URL}/specialist-1.png`
+  'Vetted Europe-based specialists for social media, content, websites, executive support and automation — one team, one point of contact.'
+const DEFAULT_OG_IMAGE = `${SITE_URL}/assets/brand/og-image.jpg`
 
 export const Route = createRootRoute({
   head: () => ({
@@ -26,7 +26,7 @@ export const Route = createRootRoute({
       },
       { name: 'description', content: DEFAULT_DESCRIPTION },
       { name: 'robots', content: 'index, follow' },
-      { name: 'theme-color', content: '#7a1f3d' },
+      { name: 'theme-color', content: '#6f2c3e' },
       { property: 'og:site_name', content: SITE_NAME },
       { property: 'og:type', content: 'website' },
       { property: 'og:title', content: DEFAULT_TITLE },
@@ -39,7 +39,12 @@ export const Route = createRootRoute({
       { name: 'twitter:description', content: DEFAULT_DESCRIPTION },
       { name: 'twitter:image', content: DEFAULT_OG_IMAGE },
     ],
-    links: [{ rel: 'icon', href: '/favicon.ico' }],
+    links: [
+      { rel: 'icon', href: '/favicon.ico' },
+      { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
+      { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+      { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossOrigin: 'anonymous' },
+    ],
   }),
   shellComponent: RootDocument,
 })
@@ -59,8 +64,8 @@ const LOCAL_BUSINESS_JSON_LD = {
   areaServed: 'Europe',
   sameAs: [
     'https://www.upwork.com/agencies/virtuosovirtualassistants/',
-    'https://www.facebook.com/share/g/1G4xqJeqs4/',
     'https://www.linkedin.com/company/virtuosovirtualassistants',
+    'https://www.instagram.com/virtuosova_agency/',
   ],
 }
 
