@@ -4,7 +4,6 @@ import { ChevronDown, Instagram, Linkedin, Mail, Clock as ClockIcon } from 'luci
 import { ContactForm } from '../components/ContactForm'
 import {
   FAQS,
-  LogoSvg,
   ONE_TEAM_POINTS,
   PRICING_TIERS,
   SERVICE_GROUPS,
@@ -22,8 +21,7 @@ const HOME_TITLE = 'Virtuoso | Virtual Assistant Agency — One Team for Marketi
 const HOME_DESCRIPTION =
   'Vetted Europe-based specialists for social media, content, websites, executive support and automation — one team, one point of contact.'
 const HOME_URL = 'https://virtuosovirtualassistants.com/'
-// [PLACEHOLDER: swap for the cropped 1200×630 hero photo (virtuoso.png) once it's in /assets/brand/]
-const HOME_IMAGE = 'https://virtuosovirtualassistants.com/specialist-1.png'
+const HOME_IMAGE = 'https://virtuosovirtualassistants.com/assets/brand/og-image.jpg'
 
 export const Route = createFileRoute('/')({
   component: VirtuosoHome,
@@ -107,10 +105,7 @@ function VirtuosoHome() {
       {/* NAV */}
       <nav className={`v-nav${scrolled ? ' scrolled' : ''}`}>
         <a href="#" className="logo-wrap">
-          <LogoSvg />
-          <span className="logo-name">
-            Virtu<span>o</span>so
-          </span>
+          <img src="/assets/brand/logo-mark-burgundy.png" alt="Virtuoso" className="logo-mark" />
         </a>
         <ul className="nav-links">
           {NAV_LINKS.map((l) => (
@@ -135,8 +130,7 @@ function VirtuosoHome() {
           <nav className="mobile-drawer" onClick={e => e.stopPropagation()}>
             <div className="mobile-drawer-top">
               <a href="#" className="logo-wrap" onClick={() => setMenuOpen(false)}>
-                <LogoSvg />
-                <span className="logo-name">Virtu<span>o</span>so</span>
+                <img src="/assets/brand/logo-mark-burgundy.png" alt="Virtuoso" className="logo-mark" />
               </a>
               <button className="mobile-close" onClick={() => setMenuOpen(false)} aria-label="Close menu">✕</button>
             </div>
@@ -180,13 +174,12 @@ function VirtuosoHome() {
           </div>
         </div>
         <div className="hero-right">
-          {/* [PLACEHOLDER: hero photo — crop the desk shot in virtuoso.png (trim the empty right edge) and bleed it to the edge here] */}
           <div className="hero-visual">
             <img
-              src="/specialist-1.webp"
-              alt="[PLACEHOLDER: Virtuoso desk photo]"
-              width={1254}
-              height={1254}
+              src="/assets/brand/virtuoso-hero.webp"
+              alt="A laptop on a desk showing the Virtuoso logo, next to a terracotta vase and a brass desk lamp"
+              width={3587}
+              height={2500}
               loading="eager"
             />
           </div>
@@ -255,6 +248,14 @@ function VirtuosoHome() {
             keeps your context, your standards, and your history — no matter how many
             services you add.
           </p>
+          <img
+            className="why-visual"
+            src="/assets/brand/instagram-square.webp"
+            alt="The Virtuoso logo on a billboard"
+            width={1000}
+            height={1000}
+            loading="lazy"
+          />
         </div>
         <div className="why-list reveal">
           {ONE_TEAM_POINTS.map((p) => (
@@ -439,10 +440,7 @@ function VirtuosoHome() {
       <footer>
         <div>
           <a href="#" className="logo-wrap">
-            <LogoSvg color="#b85070" />
-            <span className="logo-name" style={{ color: 'rgba(255,255,255,0.75)' }}>
-              Virtu<span style={{ color: '#b85070' }}>o</span>so
-            </span>
+            <img src="/assets/brand/logo-mark-brass.png" alt="Virtuoso" className="logo-mark logo-mark-footer" />
           </a>
           <p className="f-tagline">
             A team of vetted specialists helping entrepreneurs and small teams grow — matched to

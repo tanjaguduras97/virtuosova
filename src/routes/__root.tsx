@@ -9,8 +9,7 @@ const SITE_NAME = 'Virtuoso Virtual Assistants'
 const DEFAULT_TITLE = 'Virtuoso | Virtual Assistant Agency — One Team for Marketing, Operations & Support'
 const DEFAULT_DESCRIPTION =
   'Vetted Europe-based specialists for social media, content, websites, executive support and automation — one team, one point of contact.'
-// [PLACEHOLDER: swap for the cropped 1200×630 hero photo (virtuoso.png) once it's in /assets/brand/]
-const DEFAULT_OG_IMAGE = `${SITE_URL}/specialist-1.png`
+const DEFAULT_OG_IMAGE = `${SITE_URL}/assets/brand/og-image.jpg`
 
 export const Route = createRootRoute({
   head: () => ({
@@ -42,6 +41,7 @@ export const Route = createRootRoute({
     ],
     links: [
       { rel: 'icon', href: '/favicon.ico' },
+      { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
       { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
       { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossOrigin: 'anonymous' },
     ],

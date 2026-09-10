@@ -18,7 +18,11 @@ src/
     products.ts         Template product catalog (scaffold, not used on main site)
   styles.css            All CSS: Virtuoso design tokens, layout, component styles
   router.tsx            TanStack Router setup
-public/                 Static assets (favicon, logos)
+public/                 Static assets (favicon, testimonial/team photos)
+public/assets/brand/    Source brand files (logo-source.png, virtuoso-desk.png,
+                         instagram-v2.png) plus derived exports used on the site
+                         (logo-mark-burgundy.png / -brass.png, favicon-source.png,
+                         virtuoso-hero.webp, og-image.jpg, instagram-square.webp)
 ```
 
 ## Architecture Decisions
@@ -79,6 +83,19 @@ shipped** (project management).
 
 ## Non-obvious Decisions
 
+- There's no vector logo file — `logo-source.png` is a flat photo of the hand-lettered
+  wordmark on a cream background, no alpha channel. `logo-mark-burgundy.png` /
+  `-brass.png` were derived from it by keying the background to transparent (luma
+  threshold) and filling the mark with a solid color, then trimming to the
+  wordmark+bulb (dropping the "VIRTUAL ASSISTANTS" subline). Re-derive rather than
+  re-keying by hand if the source logo ever changes. Brass is used for the mark on the
+  dark footer specifically because plain burgundy is nearly invisible against `--ink`
+  (contrast ~1.35:1); logos are exempt from WCAG text-contrast rules, but it still needs
+  to read as a logo.
+- `virtuoso-hero.webp` and `og-image.jpg` are both crops of `virtuoso-desk.png`, which
+  has a fully transparent right-hand strip (not literally black — it renders black only
+  when flattened to JPEG without a background). `instagram-square.webp` is the square
+  crop out of `instagram-v2.png`, same transparent-strip pattern.
 - Testimonials (`TESTIMONIALS`) use real client photos, kept verbatim from the original
   copy — do not paraphrase the quotes.
 - `SPECIALISTS` (the five `specialist-*.png` team photos) don't have names or specialties

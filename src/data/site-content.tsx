@@ -200,28 +200,3 @@ export const MARQUEE_ITEMS = [
   'Photo & Video Editing',
   'Customer Support',
 ]
-
-export function LogoSvg({ color = '#7a1f3d' }: { color?: string }) {
-  return (
-    <svg
-      className="logo-svg"
-      viewBox="0 0 32 32"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <line
-        x1="16" y1="3" x2="16" y2="14"
-        stroke={color} strokeWidth="2.8" strokeLinecap="round"
-      />
-      <line
-        x1="16" y1="14" x2="6" y2="27"
-        stroke={color} strokeWidth="2.8" strokeLinecap="round"
-      />
-      <line
-        x1="16" y1="14" x2="26" y2="27"
-        stroke={color} strokeWidth="2.8" strokeLinecap="round"
-      />
-      <circle cx="16" cy="3" r="2" fill={color} />
-    </svg>
-  )
-}

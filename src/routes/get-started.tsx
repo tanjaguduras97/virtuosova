@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { ContactForm } from '../components/ContactForm'
-import { LogoSvg, MARQUEE_ITEMS, TESTIMONIALS } from '../data/site-content'
+import { MARQUEE_ITEMS, TESTIMONIALS } from '../data/site-content'
 import { useReveal } from '../hooks/useReveal'
 
 const LP_TITLE = 'Get a Free VA Quote | Virtuoso Virtual Assistants'
@@ -48,10 +48,7 @@ function GetStarted() {
       {/* NAV — logo only, no site links, single CTA back into this page's own form */}
       <nav className="v-nav">
         <span className="logo-wrap">
-          <LogoSvg />
-          <span className="logo-name">
-            Virtu<span>o</span>so
-          </span>
+          <img src="/assets/brand/logo-mark-burgundy.png" alt="Virtuoso" className="logo-mark" />
         </span>
         <a href="#contact-form" className="nav-cta">Get My Quote</a>
       </nav>
@@ -264,10 +261,7 @@ function GetStarted() {
       <footer>
         <div>
           <span className="logo-wrap">
-            <LogoSvg color="#b85070" />
-            <span className="logo-name" style={{ color: 'rgba(255,255,255,0.75)' }}>
-              Virtu<span style={{ color: '#b85070', fontStyle: 'italic' }}>o</span>so
-            </span>
+            <img src="/assets/brand/logo-mark-brass.png" alt="Virtuoso" className="logo-mark logo-mark-footer" />
           </span>
           <p className="f-tagline">
             A network of vetted specialists helping entrepreneurs and executives get
