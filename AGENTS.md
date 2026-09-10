@@ -57,7 +57,8 @@ Loaded via Google Fonts (`<link>` injected inside the component): Fraunces (seri
 
 ## Services Order
 
-Services render in this order (important — matches product direction):
+`SERVICES` in `src/data/site-content.tsx` stays in this flat order (it also feeds the
+contact-form service dropdown):
 1. Project Management
 2. Website Development
 3. Social Media Management
@@ -67,9 +68,23 @@ Services render in this order (important — matches product direction):
 7. Customer Support
 8. Automation Setup
 
+The homepage no longer renders that flat list directly — `SERVICE_GROUPS` regroups the
+same entries by outcome for display: **Get seen** (social, content, website, photo/video),
+**Get your time back** (executive support, customer support, automation), **Get things
+shipped** (project management).
+
 ## Non-obvious Decisions
 
-- The `about-visual` card (dark card with Tanja quote) uses a monogram circle (`at-ico`) instead of a photo — no photo is available in the codebase.
-- Testimonial cards all use initial-based avatar circles (`t-avatar`) instead of headshots.
-- The hero stats card uses "Fast Onboarding" in place of "24/7 Available" — per product direction.
-- The media strip (photo/video placeholder grid above services) was removed — it contained only placeholder content with no real assets.
+- Testimonials (`TESTIMONIALS`) use real client photos, kept verbatim from the original
+  copy — do not paraphrase the quotes.
+- `SPECIALISTS` (the five `specialist-*.png` team photos) don't have names or specialties
+  in the codebase — they're `[PLACEHOLDER: name]` / `[PLACEHOLDER: specialty]` until Tanja
+  supplies them.
+- `/get-started` is a separate, `noindex` PPC landing page that intentionally keeps the
+  pre-refresh design (emoji icons, stats card, italic headline, testimonial carousel
+  classes). It shares components (`ContactForm`) and base CSS/tokens with the homepage, so
+  changing shared classes or `:root` tokens affects it too — but its own JSX is out of
+  scope for homepage changes and should be left alone unless asked.
+- The homepage intentionally has no eyebrow labels (`.sec-label`) above section headings
+  and no italicized headline words — both were removed sitewide as template patterns.
+  `/get-started` still uses `.sec-label`/`<em>` since its copy wasn't touched.

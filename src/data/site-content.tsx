@@ -1,47 +1,165 @@
-const S = (p: React.SVGProps<SVGSVGElement>) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" width="22" height="22" {...p} />
-)
+import {
+  Award,
+  ClipboardList,
+  Clock,
+  Globe,
+  HeartPulse,
+  Headphones,
+  Image as ImageIcon,
+  Inbox,
+  Layers,
+  Megaphone,
+  Package,
+  PenLine,
+  Rocket,
+  ShieldCheck,
+  ShoppingBag,
+  Target,
+  UserCheck,
+  Users,
+  Workflow,
+} from 'lucide-react'
 
+const iconProps = { size: 22, strokeWidth: 1.75 }
+
+// Flat list, kept in this order for the contact-form service dropdown.
 export const SERVICES = [
   {
-    icon: <S><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 10l2 2 4-4M9 15h6"/></S>,
+    icon: <ClipboardList {...iconProps} />,
     name: 'Project Management',
-    desc: 'Organized timelines, cross-team coordination, and task tracking so your projects ship on time.',
+    desc: 'Timelines, cross-team coordination, task tracking, launches.',
   },
   {
-    icon: <S><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 9h20M8 13l-2 2 2 2M16 13l2 2-2 2M12 18l1-4"/></S>,
+    icon: <Globe {...iconProps} />,
     name: 'Website Development',
-    desc: 'Landing pages and full websites built to look great, load fast, and convert visitors into clients.',
+    desc: 'Landing pages and full sites that load fast and convert.',
   },
   {
-    icon: <S><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.4 10.9l7.2-4M8.4 13.1l7.2 4"/></S>,
+    icon: <Megaphone {...iconProps} />,
     name: 'Social Media Management',
-    desc: 'Strategy, scheduling, community management, and growth across all your platforms — handled completely.',
+    desc: 'Strategy, scheduling, community, growth.',
   },
   {
-    icon: <S><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></S>,
+    icon: <PenLine {...iconProps} />,
     name: 'Content Creation',
-    desc: 'Engaging posts, captions, newsletters, and brand storytelling crafted to connect with your audience.',
+    desc: 'Posts, captions, newsletters, brand storytelling.',
   },
   {
-    icon: <S><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></S>,
+    icon: <ImageIcon {...iconProps} />,
     name: 'Photo & Video Editing',
-    desc: 'Professional editing and post-production that keeps your content polished, on-brand, and scroll-stopping.',
+    desc: 'Polished, on-brand, ready to post.',
   },
   {
-    icon: <S><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2M12 12v4M10 14h4"/></S>,
+    icon: <Inbox {...iconProps} />,
     name: 'Executive Support',
-    desc: 'Calendar control, inbox management, research, and strategic admin for busy CEOs and leaders.',
+    desc: 'Inbox, calendar, research, strategic admin.',
   },
   {
-    icon: <S><path d="M3 18v-6a9 9 0 0118 0v6"/><path d="M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3zM3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3z"/></S>,
+    icon: <Headphones {...iconProps} />,
     name: 'Customer Support',
-    desc: 'Professional, responsive customer service via calls — keeping your clients happy and loyal.',
+    desc: 'Professional, responsive service for your clients.',
   },
   {
-    icon: <S><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1l2.1-2.1M17 7l2.1-2.1"/></S>,
+    icon: <Workflow {...iconProps} />,
     name: 'Automation Setup',
-    desc: 'Smart workflow automations and tool integrations that save hours every week.',
+    desc: 'Workflows and tool integrations that save hours a week.',
+  },
+]
+
+// Services regrouped by outcome for the homepage — same underlying services,
+// referenced by name so descriptions stay in one place.
+export const SERVICE_GROUPS = [
+  { title: 'Get seen', names: ['Social Media Management', 'Content Creation', 'Website Development', 'Photo & Video Editing'] },
+  { title: 'Get your time back', names: ['Executive Support', 'Customer Support', 'Automation Setup'] },
+  { title: 'Get things shipped', names: ['Project Management'] },
+].map((group) => ({
+  ...group,
+  items: group.names.map((name) => SERVICES.find((s) => s.name === name)!),
+}))
+
+export const WHO_WE_HELP = [
+  { icon: <Users {...iconProps} />, title: 'Coaches & consultants', desc: 'Client delivery, launches, admin, content.' },
+  { icon: <Layers {...iconProps} />, title: 'Agencies', desc: 'Overflow work, project management, client comms.' },
+  { icon: <ShoppingBag {...iconProps} />, title: 'E-commerce brands', desc: 'Customer support, product content, ads support.' },
+  { icon: <HeartPulse {...iconProps} />, title: 'Health & wellness businesses', desc: 'Scheduling, patient/client comms, content.' },
+  { icon: <Rocket {...iconProps} />, title: 'Small teams scaling up', desc: 'Operations, systems, automation.' },
+]
+
+export const ONE_TEAM_POINTS = [
+  { icon: <UserCheck {...iconProps} />, title: 'One point of contact.', desc: 'Tanja runs your account and knows the whole picture.' },
+  { icon: <Award {...iconProps} />, title: 'Specialists, not generalists.', desc: 'Each service is done by someone who does it every day.' },
+  { icon: <Layers {...iconProps} />, title: 'Add services without re-onboarding.', desc: 'Your context stays with the team.' },
+  { icon: <ShieldCheck {...iconProps} />, title: 'Confidential by default.', desc: 'NDAs and secure workflows on every engagement.' },
+]
+
+export const PRICING_TIERS = [
+  {
+    icon: <Clock {...iconProps} />,
+    title: 'Hourly',
+    price: 'From $10/hr',
+    desc: 'For focused tasks or getting started without commitment.',
+  },
+  {
+    icon: <Package {...iconProps} />,
+    title: 'Monthly packages',
+    price: 'From $200/month',
+    desc: 'Consistent support at a fixed cost. [PLACEHOLDER: hours included in the $200 package — should be at least 20 so the package beats the hourly rate]',
+  },
+  {
+    icon: <Target {...iconProps} />,
+    title: 'Project-based',
+    price: 'Quoted up front',
+    desc: 'Website builds, content campaigns, one-off launches.',
+  },
+]
+
+export const TEAM_LEAD = {
+  name: 'Tanja',
+  role: 'Founder, your point of contact',
+  photo: '/tanja.jpg',
+  bio: '[PLACEHOLDER: short bio — background, years running Virtuoso, what she personally handles]',
+}
+
+export const SPECIALISTS = [
+  { name: '[PLACEHOLDER: name]', role: '[PLACEHOLDER: specialty]', photo: '/specialist-1.png' },
+  { name: '[PLACEHOLDER: name]', role: '[PLACEHOLDER: specialty]', photo: '/specialist-2.png' },
+  { name: '[PLACEHOLDER: name]', role: '[PLACEHOLDER: specialty]', photo: '/specialist-3.png' },
+  { name: '[PLACEHOLDER: name]', role: '[PLACEHOLDER: specialty]', photo: '/specialist-4.png' },
+  { name: '[PLACEHOLDER: name]', role: '[PLACEHOLDER: specialty]', photo: '/specialist-5.png' },
+]
+
+export const FAQS = [
+  {
+    q: 'How do you vet your specialists?',
+    a: 'Every specialist goes through a skills interview, a paid trial task, and a review of past client work before they join a Virtuoso account. We only bring people onto the team we’d trust with our own business.',
+  },
+  {
+    q: 'Who will I actually be talking to day to day?',
+    a: 'Tanja. She’s your single point of contact and knows your account end to end, so you’re never chasing several different people for updates.',
+  },
+  {
+    q: 'What if the specialist isn’t the right fit?',
+    a: 'Tell Tanja and we’ll swap them in without starting your onboarding over. Your context, documents, and preferences stay with the team.',
+  },
+  {
+    q: 'Is there a minimum number of hours?',
+    a: 'No. You can start with a single hourly task and add a monthly package or a full project once you know what fits.',
+  },
+  {
+    q: 'What time zones do you cover?',
+    a: 'We work CET, based in Banja Luka, Bosnia & Herzegovina — which overlaps with US mornings and covers a full UK working day.',
+  },
+  {
+    q: 'How do you handle confidentiality and access to my accounts?',
+    a: 'Every specialist signs an NDA before starting, and we use secure, permission-based access to your tools — never shared passwords.',
+  },
+  {
+    q: 'How fast can we start?',
+    a: 'Most clients are onboarded within a few days of their discovery call, once we’ve matched you with the right specialist.',
+  },
+  {
+    q: 'Can I start with one service and add more later?',
+    a: 'Yes — that’s how most clients start. The same team stays with you, so adding a service doesn’t mean starting over.',
   },
 ]
 

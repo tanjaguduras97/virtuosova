@@ -6,9 +6,10 @@ import { GA4_MEASUREMENT_ID, TRACKING_CONFIGURED } from '../lib/tracking'
 
 const SITE_URL = 'https://virtuosovirtualassistants.com'
 const SITE_NAME = 'Virtuoso Virtual Assistants'
-const DEFAULT_TITLE = 'Virtuoso | Virtual Assistant Agency'
+const DEFAULT_TITLE = 'Virtuoso | Virtual Assistant Agency — One Team for Marketing, Operations & Support'
 const DEFAULT_DESCRIPTION =
-  'Get matched with a vetted Europe-based VA specialist — social media, content creation, executive support, automation, and more.'
+  'Vetted Europe-based specialists for social media, content, websites, executive support and automation — one team, one point of contact.'
+// [PLACEHOLDER: swap for the cropped 1200×630 hero photo (virtuoso.png) once it's in /assets/brand/]
 const DEFAULT_OG_IMAGE = `${SITE_URL}/specialist-1.png`
 
 export const Route = createRootRoute({
@@ -59,8 +60,8 @@ const LOCAL_BUSINESS_JSON_LD = {
   areaServed: 'Europe',
   sameAs: [
     'https://www.upwork.com/agencies/virtuosovirtualassistants/',
-    'https://www.facebook.com/share/g/1G4xqJeqs4/',
     'https://www.linkedin.com/company/virtuosovirtualassistants',
+    'https://www.instagram.com/virtuosova_agency/',
   ],
 }
 
