@@ -27,7 +27,7 @@ export const Route = createRootRoute({
       },
       { name: 'description', content: DEFAULT_DESCRIPTION },
       { name: 'robots', content: 'index, follow' },
-      { name: 'theme-color', content: '#7a1f3d' },
+      { name: 'theme-color', content: '#6f2c3e' },
       { property: 'og:site_name', content: SITE_NAME },
       { property: 'og:type', content: 'website' },
       { property: 'og:title', content: DEFAULT_TITLE },
@@ -40,7 +40,11 @@ export const Route = createRootRoute({
       { name: 'twitter:description', content: DEFAULT_DESCRIPTION },
       { name: 'twitter:image', content: DEFAULT_OG_IMAGE },
     ],
-    links: [{ rel: 'icon', href: '/favicon.ico' }],
+    links: [
+      { rel: 'icon', href: '/favicon.ico' },
+      { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+      { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossOrigin: 'anonymous' },
+    ],
   }),
   shellComponent: RootDocument,
 })

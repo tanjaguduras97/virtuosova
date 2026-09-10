@@ -182,8 +182,10 @@ function VirtuosoHome() {
           {/* [PLACEHOLDER: hero photo — crop the desk shot in virtuoso.png (trim the empty right edge) and bleed it to the edge here] */}
           <div className="hero-visual">
             <img
-              src="/specialist-1.png"
+              src="/specialist-1.webp"
               alt="[PLACEHOLDER: Virtuoso desk photo]"
+              width={1254}
+              height={1254}
               loading="eager"
             />
           </div>

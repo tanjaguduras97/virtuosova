@@ -116,16 +116,16 @@ export const PRICING_TIERS = [
 export const TEAM_LEAD = {
   name: 'Tanja',
   role: 'Founder, your point of contact',
-  photo: '/tanja.jpg',
+  photo: '/tanja.webp',
   bio: '[PLACEHOLDER: short bio — background, years running Virtuoso, what she personally handles]',
 }
 
 export const SPECIALISTS = [
-  { name: '[PLACEHOLDER: name]', role: '[PLACEHOLDER: specialty]', photo: '/specialist-1.png' },
-  { name: '[PLACEHOLDER: name]', role: '[PLACEHOLDER: specialty]', photo: '/specialist-2.png' },
-  { name: '[PLACEHOLDER: name]', role: '[PLACEHOLDER: specialty]', photo: '/specialist-3.png' },
-  { name: '[PLACEHOLDER: name]', role: '[PLACEHOLDER: specialty]', photo: '/specialist-4.png' },
-  { name: '[PLACEHOLDER: name]', role: '[PLACEHOLDER: specialty]', photo: '/specialist-5.png' },
+  { name: '[PLACEHOLDER: name]', role: '[PLACEHOLDER: specialty]', photo: '/specialist-1.webp' },
+  { name: '[PLACEHOLDER: name]', role: '[PLACEHOLDER: specialty]', photo: '/specialist-2.webp' },
+  { name: '[PLACEHOLDER: name]', role: '[PLACEHOLDER: specialty]', photo: '/specialist-3.webp' },
+  { name: '[PLACEHOLDER: name]', role: '[PLACEHOLDER: specialty]', photo: '/specialist-4.webp' },
+  { name: '[PLACEHOLDER: name]', role: '[PLACEHOLDER: specialty]', photo: '/specialist-5.webp' },
 ]
 
 export const FAQS = [
@@ -168,25 +168,25 @@ export const TESTIMONIALS = [
     text: '"Working with Tanja as my Operations Manager has been a game-changer. I didn\'t have to worry about recruitment or meetings — she handled it all. I\'ve found Eastern European VAs to be not only cost-effective but incredibly efficient."',
     name: 'Greig Wells',
     role: 'Founder, Love Thy Neighbor Marketing & Virtual Dinner Party',
-    photo: '/greig-wells.png',
+    photo: '/greig-wells.webp',
   },
   {
     text: '"I am very much impressed with Tanja and my virtual assistant, Una! Tanja personally took time to introduce us and make sure everything flowed smoothly. Una is smart, efficient, kind, and communicates quickly and well."',
     name: 'KennaRae Miller Thomas',
     role: 'Life & Business Coach',
-    photo: '/kennarae.png',
+    photo: '/kennarae.webp',
   },
   {
     text: '"I deeply appreciate that my VA stays ahead of the curve. I ask for help, go to sleep, and wake up for it to be done! I feel like Snow White who has her 7 gnomes keeping her business house clean while she sleeps."',
     name: 'Sylvia Becker Hill',
     role: 'Authentic Living & Prosperity Neuroplastician for Professional Women',
-    photo: '/sylvia.png',
+    photo: '/sylvia.webp',
   },
   {
     text: '"Tanja is a fantastic project manager. She\'s been on the team since March and is my right hand woman on all things. She\'s helped me simplify my systems, given me more free time to provide excellent care to my clients, and keeps \'Elevate Your Health Plan\' running smoothly and efficiently."',
     name: 'Mary Hunt',
     role: 'Founder, Elevate Your Health Plan',
-    photo: '/mary-hunt.jpg',
+    photo: '/mary-hunt.webp',
   },
 ]
 
