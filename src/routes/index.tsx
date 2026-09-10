@@ -159,7 +159,7 @@ function VirtuosoHome() {
       {/* HERO */}
       <section className="hero">
         <div className="hero-left">
-          <div className="hero-kicker">Virtual Assistant Agency</div>
+          <div className="hero-kicker">Virtual assistant agency</div>
           <h1 className="hero-title">
             One team.<br />Every part of your growth.
           </h1>

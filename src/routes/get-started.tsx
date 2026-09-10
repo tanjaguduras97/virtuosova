@@ -39,8 +39,9 @@ function GetStarted() {
 
   return (
     <>
+      {/* Matches the brand fonts now referenced by shared design tokens in styles.css. */}
       <link
-        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,600;1,9..144,700&family=Outfit:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=Instrument+Sans:wght@400;500&display=swap"
         rel="stylesheet"
       />
 

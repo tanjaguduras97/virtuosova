@@ -33,7 +33,10 @@ Rather than using Tailwind utility classes throughout, the site uses a custom CS
 The contact form uses local `useState`. No Zustand or global store is needed for this site.
 
 ### Fonts
-Loaded via Google Fonts (`<link>` injected inside the component): Fraunces (serif display), Outfit (body sans-serif), DM Mono (labels/monospace).
+Loaded via Google Fonts (`<link>` injected inside each route component, so it must be kept
+in sync across `index.tsx` and `get-started.tsx`): Bricolage Grotesque (headings, `--font-d`)
+and Instrument Sans (body, `--font-b`). Brand direction caps the site at two typefaces, so
+`--font-m` (small labels/kickers) is just an alias for `--font-b`, not a third font.
 
 ## Coding Conventions
 
@@ -46,14 +49,15 @@ Loaded via Google Fonts (`<link>` injected inside the component): Fraunces (seri
 
 | Token | Value | Use |
 |-------|-------|-----|
-| `--terra` | `#7a1f3d` | Primary brand color (deep rose) |
-| `--terra3` | `#b85070` | Lighter accent |
-| `--ink` | `#1a1410` | Primary text / dark backgrounds |
-| `--off` | `#faf8f5` | Off-white section backgrounds |
+| `--terra` | `#6f2c3e` | Burgundy — primary brand color: headings, buttons, logo |
+| `--terra3` | `#b08d57` | Brass — small accents *only* (link/icon hovers). Fails text contrast on light backgrounds, so never use it for body copy or static labels. |
+| `--ink` | `#3a2a2e` | Warm dark ink — body text |
+| `--off` | `#f6f2ec` | Cream — page/section background |
+| `--off2` | `#e8ded2` | Sand — alternate section background |
 | `--muted` | `#8a7d74` | Secondary text |
-| `--font-d` | Fraunces | Display headings |
-| `--font-b` | Outfit | Body text |
-| `--font-m` | DM Mono | Labels, kickers, metadata |
+| `--font-d` | Bricolage Grotesque | Display headings (weight 600) |
+| `--font-b` | Instrument Sans | Body text (weight 400/500) |
+| `--font-m` | = `--font-b` | Labels, kickers, metadata — no separate mono font |
 
 ## Services Order
 
