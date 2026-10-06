@@ -1,6 +1,5 @@
 User-agent: *
 Allow: /
 Disallow: /api/
-Disallow: /ledger/
 
 Sitemap: https://virtuosovirtualassistants.com/sitemap.xml
